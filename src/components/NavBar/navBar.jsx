@@ -9,7 +9,6 @@ const NavBarContainer = styled.section`
   max-width: 117px;
   width: 100%;
   background-color: black;
-  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;

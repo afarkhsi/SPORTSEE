@@ -10,24 +10,38 @@ import LineChartComponent from '../../components/LineChart/lineChart';
 const HomeContainer = styled.div`
   display: flex;
 `;
-const BodyContainer = styled.section``;
+const BodyContainer = styled.section`
+  margin: auto auto auto 50px;
+`;
+
+const ChartsWrapper = styled.div`
+  display: flex;
+  gap: 10rem;
+`;
+
+const ChartsContainer = styled.div``;
+
+const ChartsContainerBlock = styled.div`
+  display: flex;
+  gap: 1.5rem;
+`;
 function HomePage() {
   return (
     <HomeContainer>
       <NavBar />
-      <BodyContainer>
+      <BodyContainer className="body_container">
         <CardInfo />
-        <div>
-          <div>
+        <ChartsWrapper>
+          <ChartsContainer>
             <BarChartComponent />
-            <div className="default_class_chart">
+            <ChartsContainerBlock className="default_class_chart">
               <LineChartComponent />
               <RadarChartComponent />
               <RadialChartComponent />
-            </div>
-          </div>
+            </ChartsContainerBlock>
+          </ChartsContainer>
           <div>CALORIES</div>
-        </div>
+        </ChartsWrapper>
       </BodyContainer>
     </HomeContainer>
   );

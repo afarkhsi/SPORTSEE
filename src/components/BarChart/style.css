@@ -4,3 +4,6 @@
   max-width: 835px;
   width: 100%;
 }
+.recharts-default-legend {
+  font-size: 14px;
+}

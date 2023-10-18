@@ -1,0 +1,18 @@
+.linechart_wrapper {
+  background-color: #ff0000;
+  border-radius: 5px;
+  position: relative;
+}
+.linechart_wrapper_info {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 2px;
+}
+.test {
+  color: black;
+  height: 100%;
+  width: 20%;
+}

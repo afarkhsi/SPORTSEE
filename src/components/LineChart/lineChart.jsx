@@ -1,77 +1,175 @@
 /**En tant qu’utilisateur, je veux voir ma durée moyenne des sessions sous la forme d’un LineChart. L’axe des abscisses correspond à la durée moyenne des sessions. Un tooltip apparaît au survol. */
+import './style.css';
 import React from 'react';
 import {
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
 } from 'recharts';
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { USER_AVERAGE_SESSIONS } from '../../mockData';
 
 export default function LineChartComponent() {
+  const dataTest = USER_AVERAGE_SESSIONS[0].sessions;
+  const tabTest = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const renderTooltip = ({ active, payload }) => {
+    if (active && payload.length) {
+      return (
+        <div
+          className="linechart_wrapper_info"
+          style={{
+            background: '#FFFFFF',
+            color: '#000000',
+            height: '20px',
+            margin: '10px',
+            textAlign: 'center',
+            fontSize: '12px',
+            fontWeight: 'bold',
+          }}
+        >
+          <p>{payload[0].value} min</p>
+        </div>
+      );
+    }
+  };
+
   return (
-    <AreaChart
-      width={500}
-      height={400}
-      data={data}
+    <LineChart
+      className="linechart_wrapper"
+      width={260}
+      height={260}
+      data={dataTest}
       margin={{
-        top: 10,
-        right: 30,
+        top: 5,
+        right: 0,
         left: 0,
-        bottom: 0,
+        bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-    </AreaChart>
+      <CartesianGrid
+        strokeDasharray="3 3"
+        vertical={false}
+        horizontal={false}
+      />
+      <defs>
+        <linearGradient id="lineGradient">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
+          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
+        </linearGradient>
+      </defs>
+      <XAxis
+        dataKey="day"
+        style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
+        axisLine={false}
+        tickLine={false}
+        tickFormatter={(day) => tabTest[day - 1]}
+        tick={{ fill: '#FFFFFF', opacity: '0.5' }}
+        tickSize={12}
+        padding={{ left: 20, right: 20 }}
+      />
+      <YAxis hide={true} />
+      <text
+        x="36%"
+        y="30%"
+        dy={0}
+        style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
+        width={50}
+        opacity={0.7}
+        height={100}
+        scaletofit="true"
+        textAnchor="middle"
+        verticalanchor="middle"
+      >
+        Durée moyenne des sessions
+      </text>
+      <Tooltip
+        content={renderTooltip}
+        position={{ y: 0 }}
+        cursor={{
+          stroke: '#000000',
+          strokeOpacity: '10%',
+          strokeWidth: '20%',
+          height: '100%',
+        }}
+      />
+      <Legend />
+      <Line
+        type="bump"
+        dataKey="sessionLength"
+        stroke="url(#lineGradient)"
+        strokeWidth={2.5}
+        opacity={0.5}
+        activeDot={{ r: 4, opacity: '50%' }}
+        dot={false}
+        legendType="none"
+      />
+    </LineChart>
   );
+
+  //   <LineChart
+  //     className="linechart_wrapper"
+  //     width={260}
+  //     height={260}
+  //     data={dataTest}
+  //     margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
+  //   >
+  //     <defs>
+  //       <linearGradient id="lineGradient">
+  //         <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
+  //         <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
+  //       </linearGradient>
+  //     </defs>
+  //     <text
+  //       x={10}
+  //       y={30}
+  //       textAnchor="left"
+  //       style={{
+  //         fontSize: '1.8rem',
+  //         fontWeight: 500,
+  //         fill: '#FFFFFF',
+  //         fillOpacity: '50%',
+  //       }}
+  //     >
+  //       Durée moyenne des sessions
+  //     </text>
+  //     <XAxis
+  //       dataKey="day"
+  //       axisLine={false}
+  //       tickLine={false}
+  //       tick={{ fill: '#FFFFFF', fillOpacity: '50%' }}
+  //       stroke="#FFFFFF"
+  //       tickMargin={10}
+  //       tickFormatter={(day) => tabTest[day - 1]}
+  //     />
+  //     <YAxis
+  //       dataKey="sessionLength"
+  //       hide={true}
+  //       domain={['dataMin -20', 'dataMax + 50']}
+  //     />
+  //     <Line
+  //       dataKey="sessionLength"
+  //       type="natural"
+  //       stroke="url(#lineGradient)"
+  //       strokeWidth={2.5}
+  //       dot={false}
+  //       activeDot={{
+  //         stroke: '#FFFFFF',
+  //         strokeOpacity: '50%',
+  //         strokeWidth: 10,
+  //       }}
+  //     />
+  //     <Tooltip
+  //       content={renderTooltip}
+  //       cursor={{
+  //         stroke: '#000000',
+  //         strokeOpacity: '10%',
+  //         strokeWidth: '20%',
+  //         height: '100%',
+  //       }}
+  //     />
+  //   </LineChart>
+  // );
 }

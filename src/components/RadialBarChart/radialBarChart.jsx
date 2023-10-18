@@ -56,8 +56,8 @@ const style = {
 export default function RadialChartComponent() {
   return (
     <RadialBarChart
-      width={500}
-      height={300}
+      width={260}
+      height={260}
       cx={150}
       cy={150}
       innerRadius={20}

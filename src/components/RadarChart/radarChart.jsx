@@ -1,12 +1,7 @@
 /**En tant qu’utilisateur, je veux voir mon type d’activité réalisée sous forme d’un radar chart. */
 import React, { PureComponent } from 'react';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+import './style.css';
 
 const data = [
   {
@@ -53,21 +48,21 @@ export default class RadarChartComponent extends PureComponent {
   render() {
     return (
       <RadarChart
+        className="radarchart_wrapper"
         cx="50%"
         cy="50%"
-        width={500}
-        height={500}
+        width={260}
+        height={260}
         outerRadius="80%"
         data={data}
       >
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis />
         <Radar
           name="Mike"
           dataKey="A"
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke="#FF0000"
+          fill="#FF0000"
           fillOpacity={0.6}
         />
       </RadarChart>
