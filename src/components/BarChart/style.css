@@ -1,9 +1,13 @@
 .recharts-responsive-container {
   max-height: 320px;
-  height: 100%;
-  max-width: 835px;
-  width: 100%;
+  background-color: #fbfbfb;
 }
 .recharts-default-legend {
   font-size: 14px;
+}
+
+.barChart_wrapper {
+  /* max-width: 1440px;
+  height: 320px;
+  width: 100%; */
 }

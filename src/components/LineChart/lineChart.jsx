@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from 'recharts';
 import { USER_AVERAGE_SESSIONS } from '../../mockData';
 
@@ -37,76 +38,76 @@ export default function LineChartComponent() {
   };
 
   return (
-    <LineChart
-      className="linechart_wrapper"
-      width={260}
-      height={260}
-      data={dataTest}
-      margin={{
-        top: 5,
-        right: 0,
-        left: 0,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid
-        strokeDasharray="3 3"
-        vertical={false}
-        horizontal={false}
-      />
-      <defs>
-        <linearGradient id="lineGradient">
-          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
-          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
-        </linearGradient>
-      </defs>
-      <XAxis
-        dataKey="day"
-        style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
-        axisLine={false}
-        tickLine={false}
-        tickFormatter={(day) => tabTest[day - 1]}
-        tick={{ fill: '#FFFFFF', opacity: '0.5' }}
-        tickSize={12}
-        padding={{ left: 20, right: 20 }}
-      />
-      <YAxis hide={true} />
-      <text
-        x="36%"
-        y="30%"
-        dy={0}
-        style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
-        width={50}
-        opacity={0.7}
-        height={100}
-        scaletofit="true"
-        textAnchor="middle"
-        verticalanchor="middle"
-      >
-        Durée moyenne des sessions
-      </text>
-      <Tooltip
-        content={renderTooltip}
-        position={{ y: 0 }}
-        cursor={{
-          stroke: '#000000',
-          strokeOpacity: '10%',
-          strokeWidth: '20%',
-          height: '100%',
+    <ResponsiveContainer width="100%" height="100%">
+      <LineChart
+        className="linechart_wrapper"
+        data={dataTest}
+        margin={{
+          top: 5,
+          right: 0,
+          left: 0,
+          bottom: 5,
         }}
-      />
-      <Legend />
-      <Line
-        type="bump"
-        dataKey="sessionLength"
-        stroke="url(#lineGradient)"
-        strokeWidth={2.5}
-        opacity={0.5}
-        activeDot={{ r: 4, opacity: '50%' }}
-        dot={false}
-        legendType="none"
-      />
-    </LineChart>
+      >
+        <CartesianGrid
+          strokeDasharray="3 3"
+          vertical={false}
+          horizontal={false}
+        />
+        <defs>
+          <linearGradient id="lineGradient">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
+          </linearGradient>
+        </defs>
+        <XAxis
+          dataKey="day"
+          style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
+          axisLine={false}
+          tickLine={false}
+          tickFormatter={(day) => tabTest[day - 1]}
+          tick={{ fill: '#FFFFFF', opacity: '0.5' }}
+          tickSize={12}
+          padding={{ left: 20, right: 20 }}
+        />
+        <YAxis hide={true} />
+        <text
+          x="36%"
+          y="30%"
+          dy={0}
+          style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
+          width={50}
+          opacity={0.7}
+          height={100}
+          scaletofit="true"
+          textAnchor="middle"
+          verticalanchor="middle"
+        >
+          Durée moyenne des sessions
+        </text>
+        <Tooltip
+          content={renderTooltip}
+          position={{ y: 0 }}
+          cursor={{
+            stroke: '#000000',
+            strokeOpacity: '10%',
+            strokeWidth: '20%',
+            height: '100%',
+          }}
+        />
+        <Legend />
+        <Line
+          type="bump"
+          dataKey="sessionLength"
+          stroke="url(#lineGradient)"
+          strokeWidth={2.5}
+          opacity={0.5}
+          activeDot={{ r: 4, opacity: '50%' }}
+          dot={false}
+          legendType="none"
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 
   //   <LineChart

@@ -1,85 +1,86 @@
 /**En tant qu’utilisateur, je veux voir mon score moyen sous forme d’un RadialBarChart. */
 import React from 'react';
-import { RadialBarChart, RadialBar, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { USER_MAIN_DATA } from '../../mockData';
+import styled from 'styled-components';
+import './style.css';
 
-const data = [
-  {
-    name: '18-24',
-    uv: 31.47,
-    pv: 2400,
-    fill: '#8884d8',
-  },
-  {
-    name: '25-29',
-    uv: 26.69,
-    pv: 4567,
-    fill: '#83a6ed',
-  },
-  {
-    name: '30-34',
-    uv: 15.69,
-    pv: 1398,
-    fill: '#8dd1e1',
-  },
-  {
-    name: '35-39',
-    uv: 8.22,
-    pv: 9800,
-    fill: '#82ca9d',
-  },
-  {
-    name: '40-49',
-    uv: 8.63,
-    pv: 3908,
-    fill: '#a4de6c',
-  },
-  {
-    name: '50+',
-    uv: 2.63,
-    pv: 4800,
-    fill: '#d0ed57',
-  },
-  {
-    name: 'unknow',
-    uv: 6.67,
-    pv: 4800,
-    fill: '#ffc658',
-  },
-];
+const PieCHartContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width="100%";
+  background-color: #FBFBFB;
+`;
 
-const style = {
-  top: 0,
-  left: 350,
-  lineHeight: '24px',
-};
+const PieChartTitle = styled.h1`
+  position: absolute;
+  top: 15px;
+  font-size: 15px;
+  left: 40px;
+`;
+
+const PieChartScoreText = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 60px;
+  width: 100%;
+`;
 
 export default function RadialChartComponent() {
+  const dataTest = USER_MAIN_DATA;
+
+  function test(scoreData) {
+    return scoreData.score || scoreData.todayScore;
+  }
+
+  const dataScore = dataTest.filter(test);
+  const score = USER_MAIN_DATA[0].todayScore;
+
+  const pieData = [
+    { name: 'completed', value: score, fillColor: `#FF0000` },
+    { name: 'not-completed', value: 1 - score, fillColor: 'transparent' },
+  ];
+
+  console.log(score);
   return (
-    <RadialBarChart
-      width={260}
-      height={260}
-      cx={150}
-      cy={150}
-      innerRadius={20}
-      outerRadius={140}
-      barSize={10}
-      data={data}
-    >
-      <RadialBar
-        minAngle={15}
-        label={{ position: 'insideStart', fill: '#fff' }}
-        background
-        clockWise
-        dataKey="uv"
-      />
-      <Legend
-        iconSize={10}
-        width={120}
-        height={140}
-        layout="vertical"
-        verticalAlign="middle"
-        wrapperStyle={style}
-      />
-    </RadialBarChart>
+    <PieCHartContainer className="piedchart-container">
+      <PieChartTitle className="piedchart-container_title">Score</PieChartTitle>
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={pieData}
+            dataKey="value"
+            cx="50%"
+            cy="50%"
+            innerRadius={70}
+            outerRadius={90}
+            startAngle={90}
+            endAngle={450}
+            fill="#82ca9d"
+            legendType="none"
+          >
+            {pieData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={entry.fillColor}
+                cornerRadius="50%"
+                strokeWidth={10}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <PieChartScoreText className="piedchart-container_score">
+        <span className="piedchart-container_score_value">{100 * score} %</span>
+        <span className="piedchart-container_score_text">
+          de votre objectif
+        </span>
+      </PieChartScoreText>
+    </PieCHartContainer>
   );
 }

@@ -1,2 +1,5 @@
 .default_class_chart {
+  height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

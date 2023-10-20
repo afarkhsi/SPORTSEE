@@ -1,0 +1,10 @@
+.piedchart-container_score_value {
+  font-size: 24px;
+  font-weight: bold;
+}
+.piedchart-container_score_text {
+  font-size: 16px;
+  color: #5e5f5f;
+  text-align: center;
+  font-weight: 500;
+}

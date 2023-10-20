@@ -1,71 +1,61 @@
 /**En tant qu’utilisateur, je veux voir mon type d’activité réalisée sous forme d’un radar chart. */
-import React, { PureComponent } from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  ResponsiveContainer,
+} from 'recharts';
 import './style.css';
+import { USER_PERFORMANCE } from '../../mockData';
 
-const data = [
-  {
-    subject: 'Math',
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: 'Chinese',
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'English',
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: 'Geography',
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: 'Physics',
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: 'History',
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+const RadarChartComponent = () => {
+  const dataTest = USER_PERFORMANCE[0].data;
 
-export default class RadarChartComponent extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-radar-chart-rjoc6';
+  const kindData = {
+    1: 'Cardio',
+    2: 'Energie',
+    3: 'Endurance',
+    4: 'Force',
+    5: 'Vitesse',
+    6: 'Intensité',
+  };
 
-  render() {
-    return (
+  const formatData = dataTest
+    .map((dataValue) => ({
+      ...dataValue,
+      kind: kindData[dataValue.kind],
+    }))
+    .reverse();
+
+  console.log(formatData);
+
+  return (
+    <ResponsiveContainer width="100%" height="100%">
       <RadarChart
         className="radarchart_wrapper"
         cx="50%"
         cy="50%"
-        width={260}
-        height={260}
         outerRadius="80%"
-        data={data}
+        data={formatData}
       >
         <PolarGrid />
-        <PolarAngleAxis dataKey="subject" />
+        <PolarAngleAxis
+          dataKey="kind"
+          tickLine={false}
+          tick={{ fontSize: '12px', fontWeight: '500' }}
+          stroke="#FFFFFF"
+        />
         <Radar
           name="Mike"
-          dataKey="A"
+          dataKey="value"
           stroke="#FF0000"
           fill="#FF0000"
           fillOpacity={0.6}
         />
       </RadarChart>
-    );
-  }
-}
+    </ResponsiveContainer>
+  );
+};
+
+export default RadarChartComponent;
