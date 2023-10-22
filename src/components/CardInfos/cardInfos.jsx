@@ -5,6 +5,7 @@ import { USER_MAIN_DATA } from '../../mockData';
 const CardInfoContainer = styled.article``;
 
 const CardInfoTitle = styled.h1`
+margin-bottom: 0px;
   font-size: 48px;
 `;
 

@@ -12,12 +12,28 @@ import cKalImg from '../../assets/calories-icon.svg';
 import fatImg from '../../assets/fat-icon.svg';
 import carbsImg from '../../assets/carbs-icon.svg';
 import proteinImg from '../../assets/protein-icon.svg';
+import { Loader } from '../../utils/styles/Atoms';
+import {
+  UserActivityData,
+  UserAverageSessionsData,
+  apiUrl,
+} from '../../utils/hooks/Api';
+import { UserMainData } from '../../utils/hooks/Api';
+import { useFetch } from '../../utils/hooks/Api';
 
 const HomeContainer = styled.div`
   display: flex;
   max-width: 1440px;
   width: 100%;
 `;
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const BodyContainer = styled.section`
   margin: auto auto auto 50px;
   max-width: 1440px;
@@ -27,10 +43,14 @@ const BodyContainer = styled.section`
 const ChartsWrapper = styled.div`
   display: flex;
   gap: 2rem;
+  margin: 70px auto;
 `;
 
 const ChartsContainer = styled.div`
   width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 `;
 
 const ChartsContainerBlock = styled.div`
@@ -45,51 +65,75 @@ const CaloriesContainer = styled.div`
 `;
 
 function HomePage() {
-  const data = USER_MAIN_DATA[0];
-  const dataKey = data.keyData;
+  // const data = USER_MAIN_DATA[0];
+
+  // const userId = '12';
+
+  // const userUrl = `${apiUrl}/user/${userId}`;
+
+  // const { data, isLoading } = useFetch(userUrl);
+  // const dataKey = data?.data?.keyData;
+
+  // console.log('Affichage des données API: ', dataKey);
+
+  const { isLoading, dataKey } = UserMainData();
+  const { dataAverageSession } = UserAverageSessionsData();
+  const { dataActivity } = UserActivityData();
+
+  // const dataTest = useFetch('http://localhost:3000/user/12/average-sessions');
+  // const i = dataTest?.data;
+  // const j = i?.data;
+  // const voyons = test?.sessions;
+  console.log('braaa:', dataActivity);
   return (
     <HomeContainer>
       <NavBar />
-      <BodyContainer className="body_container">
-        <CardInfo />
-        <ChartsWrapper>
-          <ChartsContainer>
-            <BarChartComponent />
-            <ChartsContainerBlock className="default_class_chart">
-              <LineChartComponent />
-              <RadarChartComponent />
-              <RadialChartComponent />
-            </ChartsContainerBlock>
-          </ChartsContainer>
-          <CaloriesContainer>
-            <CompletaryData
-              img={cKalImg}
-              data={dataKey.calorieCount}
-              unit="kCal"
-              subtitle="Calories"
-            />
-            <CompletaryData
-              img={proteinImg}
-              data={dataKey.proteinCount}
-              unit="g"
-              subtitle="Protéines"
-            />
-            <CompletaryData
-              img={carbsImg}
-              data={dataKey.carbohydrateCount}
-              unit="g"
-              subtitle="Glucides"
-            />
+      {isLoading ? (
+        <LoaderWrapper className="loader">
+          <Loader />
+        </LoaderWrapper>
+      ) : (
+        <BodyContainer className="body_container">
+          <CardInfo />
+          <ChartsWrapper>
+            <ChartsContainer>
+              <BarChartComponent data={dataActivity} />
+              <ChartsContainerBlock className="default_class_chart">
+                <LineChartComponent data={dataAverageSession} />
+                <RadarChartComponent />
+                <RadialChartComponent />
+              </ChartsContainerBlock>
+            </ChartsContainer>
+            <CaloriesContainer>
+              <CompletaryData
+                img={cKalImg}
+                data={dataKey.calorieCount}
+                unit="kCal"
+                subtitle="Calories"
+              />
+              <CompletaryData
+                img={proteinImg}
+                data={dataKey.proteinCount}
+                unit="g"
+                subtitle="Protéines"
+              />
+              <CompletaryData
+                img={carbsImg}
+                data={dataKey.carbohydrateCount}
+                unit="g"
+                subtitle="Glucides"
+              />
 
-            <CompletaryData
-              img={fatImg}
-              data={dataKey.lipidCount}
-              unit="g"
-              subtitle="Lipides"
-            />
-          </CaloriesContainer>
-        </ChartsWrapper>
-      </BodyContainer>
+              <CompletaryData
+                img={fatImg}
+                data={dataKey.lipidCount}
+                unit="g"
+                subtitle="Lipides"
+              />
+            </CaloriesContainer>
+          </ChartsWrapper>
+        </BodyContainer>
+      )}
     </HomeContainer>
   );
 }

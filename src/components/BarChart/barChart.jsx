@@ -14,11 +14,14 @@ import './style.css';
 
 import { USER_ACTIVITY } from '../../mockData';
 
-const BarChartComponent = () => {
-  const dataTest = USER_ACTIVITY[0].sessions;
+const BarChartComponent = (props) => {
+  const data = props.data;
+  const dataActivity = data?.sessions;
+
+  console.log('younamar: ', dataActivity);
 
   const dayData = () => {
-    return dataTest.map((session, index) => index + 1);
+    return dataActivity.map((session, index) => index + 1);
   };
 
   console.log(dayData);
@@ -28,7 +31,7 @@ const BarChartComponent = () => {
         className="barchart_wrapper"
         barSize={10}
         barGap={10}
-        data={dataTest}
+        data={dataActivity}
         margin={{
           top: 5,
           right: 30,

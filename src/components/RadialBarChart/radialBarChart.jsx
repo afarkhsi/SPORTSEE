@@ -12,6 +12,7 @@ const PieCHartContainer = styled.div`
   align-items: center;
   width="100%";
   background-color: #FBFBFB;
+  min-width: 0%;
 `;
 
 const PieChartTitle = styled.h1`
