@@ -16,10 +16,9 @@ import { Loader } from '../../utils/styles/Atoms';
 import {
   UserActivityData,
   UserAverageSessionsData,
-  apiUrl,
+  UserPerformanceData,
 } from '../../utils/hooks/Api';
 import { UserMainData } from '../../utils/hooks/Api';
-import { useFetch } from '../../utils/hooks/Api';
 
 const HomeContainer = styled.div`
   display: flex;
@@ -76,15 +75,16 @@ function HomePage() {
 
   // console.log('Affichage des données API: ', dataKey);
 
-  const { isLoading, dataKey } = UserMainData();
+  const { isLoading, data, dataKey, score } = UserMainData();
   const { dataAverageSession } = UserAverageSessionsData();
   const { dataActivity } = UserActivityData();
+  const { dataPerformance } = UserPerformanceData();
 
   // const dataTest = useFetch('http://localhost:3000/user/12/average-sessions');
   // const i = dataTest?.data;
   // const j = i?.data;
   // const voyons = test?.sessions;
-  console.log('braaa:', dataActivity);
+  console.log('braaa:', score);
   return (
     <HomeContainer>
       <NavBar />
@@ -94,14 +94,14 @@ function HomePage() {
         </LoaderWrapper>
       ) : (
         <BodyContainer className="body_container">
-          <CardInfo />
+          <CardInfo data={data} />
           <ChartsWrapper>
             <ChartsContainer>
               <BarChartComponent data={dataActivity} />
               <ChartsContainerBlock className="default_class_chart">
                 <LineChartComponent data={dataAverageSession} />
-                <RadarChartComponent />
-                <RadialChartComponent />
+                <RadarChartComponent data={dataPerformance} />
+                <RadialChartComponent data={data} />
               </ChartsContainerBlock>
             </ChartsContainer>
             <CaloriesContainer>

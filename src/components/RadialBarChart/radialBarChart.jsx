@@ -32,22 +32,22 @@ const PieChartScoreText = styled.div`
   width: 100%;
 `;
 
-export default function RadialChartComponent() {
-  const dataTest = USER_MAIN_DATA;
+export default function RadialChartComponent(props) {
+  const data = props.data;
 
-  function test(scoreData) {
-    return scoreData.score || scoreData.todayScore;
-  }
+  // function test(scoreData) {
+  //   return scoreData.score || scoreData.todayScore;
+  // }
 
-  const dataScore = dataTest.filter(test);
-  const score = USER_MAIN_DATA[0].todayScore;
+  const dataScore = data?.data?.score || data?.data?.todayScore;
+  console.log('lets stay:', dataScore);
+  // const score = USER_MAIN_DATA[0].todayScore;
 
   const pieData = [
-    { name: 'completed', value: score, fillColor: `#FF0000` },
-    { name: 'not-completed', value: 1 - score, fillColor: 'transparent' },
+    { name: 'completed', value: dataScore, fillColor: `#FF0000` },
+    { name: 'not-completed', value: 1 - dataScore, fillColor: 'transparent' },
   ];
 
-  console.log(score);
   return (
     <PieCHartContainer className="piedchart-container">
       <PieChartTitle className="piedchart-container_title">Score</PieChartTitle>
@@ -77,7 +77,9 @@ export default function RadialChartComponent() {
         </PieChart>
       </ResponsiveContainer>
       <PieChartScoreText className="piedchart-container_score">
-        <span className="piedchart-container_score_value">{100 * score} %</span>
+        <span className="piedchart-container_score_value">
+          {100 * dataScore} %
+        </span>
         <span className="piedchart-container_score_text">
           de votre objectif
         </span>

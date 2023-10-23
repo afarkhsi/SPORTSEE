@@ -7,10 +7,11 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import './style.css';
-import { USER_PERFORMANCE } from '../../mockData';
+// import { USER_PERFORMANCE } from '../../mockData';
 
-const RadarChartComponent = () => {
-  const dataTest = USER_PERFORMANCE[0].data;
+const RadarChartComponent = (props) => {
+  const data = props.data;
+  const dataPerformance = data?.data;
 
   const kindData = {
     1: 'Cardio',
@@ -21,12 +22,14 @@ const RadarChartComponent = () => {
     6: 'Intensité',
   };
 
-  const formatData = dataTest
-    .map((dataValue) => ({
-      ...dataValue,
-      kind: kindData[dataValue.kind],
-    }))
-    .reverse();
+  const formatData =
+    dataPerformance &&
+    dataPerformance
+      .map((dataValue) => ({
+        ...dataValue,
+        kind: kindData[dataValue.kind],
+      }))
+      .reverse();
 
   console.log(formatData);
 

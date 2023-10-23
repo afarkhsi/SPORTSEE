@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { USER_MAIN_DATA } from '../../mockData';
 
 const apiUrl = 'http://localhost:3000';
 const userId = '12';
+
 // Fetch data
-export function useFetch(url) {
+function useFetch(url) {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -28,43 +30,6 @@ export function useFetch(url) {
   return { isLoading, data, error };
 }
 
-// // Fetch data
-// function useFetch(url) {
-//   const [data, setData] = useState(null);
-//   const [isLoading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     if (!url) return;
-//     setLoading(true);
-//     fetchData(url).then((data) => setData(data));
-//   }, [url]);
-//   return { isLoading, data };
-// }
-
-// export async function fetchData(url) {
-//   try {
-//     const response = await fetch(url);
-//     const json = await response.json();
-//     // console.log('Affichage des données API: ', json);
-//     return json.data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// export const UserMainData = () => {
-//   const userUrl = `${apiUrl}/user/${userId}`;
-
-//   const { data, isLoading } = useFetch(userUrl);
-//   const id = data?.data?.id;
-//   const dataKey = data?.data?.keyData;
-//   const userInfos = data?.data?.userInfos;
-//   const score = data?.data?.todayScore;
-
-//   console.log('Affichage des données API: ', dataKey);
-//   return { isLoading, data, id, dataKey, userInfos, score };
-// };
-
 export const UserMainData = () => {
   const url = `${apiUrl}/user/${userId}`;
 
@@ -72,10 +37,9 @@ export const UserMainData = () => {
   const id = data?.data?.id;
   const dataKey = data?.data?.keyData;
   const userInfos = data?.data?.userInfos;
-  const score = data?.data?.todayScore;
 
   // console.log('Affichage des données API: ', dataKey);
-  return { isLoading, data, id, dataKey, userInfos, score };
+  return { isLoading, data, id, dataKey, userInfos };
 };
 
 export const UserActivityData = () => {
@@ -104,4 +68,18 @@ export const UserAverageSessionsData = () => {
     dataAverageSession?.sessions
   );
   return { dataAverageSession, id, isLoading };
+};
+
+export const UserPerformanceData = () => {
+  const url = `${apiUrl}/user/${userId}/performance`;
+
+  const { data, isLoading } = useFetch(url);
+  const dataPerformance = data?.data;
+  const id = dataPerformance?.data?.userId;
+
+  console.log(
+    'Affichage des données API AVERAGESESSIONDATA: ',
+    dataPerformance?.sessions
+  );
+  return { dataPerformance, id, isLoading };
 };

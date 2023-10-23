@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import './style.css';
 
-import { USER_ACTIVITY } from '../../mockData';
+// import { USER_ACTIVITY } from '../../mockData';
 
 const BarChartComponent = (props) => {
   const data = props.data;
