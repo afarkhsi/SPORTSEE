@@ -76,7 +76,7 @@ const BarChartComponent = (props) => {
         >
           Activité quotidienne
         </text>
-        <Tooltip />
+        <Tooltip background="black" />
         <Legend
           className="legend-size"
           align="right"

@@ -11,33 +11,32 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-// import { USER_AVERAGE_SESSIONS } from '../../mockData';
 
 export default function LineChartComponent(props) {
   const data = props.data;
   const dataSessions = data?.sessions;
   console.log('bordeldelel:', data);
   const tabTest = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  // const renderTooltip = ({ active, payload }) => {
-  //   if (active && payload.length) {
-  //     return (
-  //       <div
-  //         className="linechart_wrapper_info"
-  //         style={{
-  //           background: '#FFFFFF',
-  //           color: '#000000',
-  //           height: '20px',
-  //           margin: '10px',
-  //           textAlign: 'center',
-  //           fontSize: '12px',
-  //           fontWeight: 'bold',
-  //         }}
-  //       >
-  //         <p>{payload[0].value} min</p>
-  //       </div>
-  //     );
-  //   }
-  // };
+  const renderTooltip = ({ active, payload }) => {
+    if (active && payload.length) {
+      return (
+        <div
+          className="linechart_wrapper_info"
+          style={{
+            background: '#FFFFFF',
+            color: '#000000',
+            height: '20px',
+            margin: '10px',
+            textAlign: 'center',
+            fontSize: '12px',
+            fontWeight: 'bold',
+          }}
+        >
+          <p>{payload[0].value} min</p>
+        </div>
+      );
+    }
+  };
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -88,7 +87,7 @@ export default function LineChartComponent(props) {
           Durée moyenne des sessions
         </text>
         <Tooltip
-          // content={renderTooltip}
+          content={renderTooltip}
           position={{ y: 0 }}
           cursor={{
             stroke: '#000000',

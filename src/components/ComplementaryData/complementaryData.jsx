@@ -23,14 +23,17 @@ const CompletaryInfoSubtitle = styled.h3`
 `;
 
 const CompletaryData = (props) => {
-  const { data, unit, subtitle, img } = props;
+  const { value, unit, subtitle, img } = props;
+  // const data = props.dataKey;
+
+  console.log('25465:', value);
 
   return (
     <CompletaryDataContainer>
       <CompletaryImg src={img} alt="image" />
       <CompletaryInfo>
         <CompletaryInfoTitle>
-          {data} {unit}
+          {value} {unit}
         </CompletaryInfoTitle>
         <CompletaryInfoSubtitle>{subtitle}</CompletaryInfoSubtitle>
       </CompletaryInfo>

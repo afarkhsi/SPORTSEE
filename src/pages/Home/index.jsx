@@ -7,7 +7,7 @@ import RadarChartComponent from '../../components/RadarChart/radarChart';
 import RadialChartComponent from '../../components/RadialBarChart/radialBarChart';
 import LineChartComponent from '../../components/LineChart/lineChart';
 import CompletaryData from '../../components/ComplementaryData/complementaryData';
-import { USER_MAIN_DATA } from '../../mockData';
+// import { USER_MAIN_DATA } from '../../mockData';
 import cKalImg from '../../assets/calories-icon.svg';
 import fatImg from '../../assets/fat-icon.svg';
 import carbsImg from '../../assets/carbs-icon.svg';
@@ -21,6 +21,7 @@ import {
 import { UserMainData } from '../../utils/hooks/Api';
 
 const HomeContainer = styled.div`
+  position: relative;
   display: flex;
   max-width: 1440px;
   width: 100%;
@@ -31,6 +32,9 @@ const LoaderWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  position: absolute;
+  right: 50%;
+  top: 50%;
 `;
 
 const BodyContainer = styled.section`
@@ -64,18 +68,7 @@ const CaloriesContainer = styled.div`
 `;
 
 function HomePage() {
-  // const data = USER_MAIN_DATA[0];
-
-  // const userId = '12';
-
-  // const userUrl = `${apiUrl}/user/${userId}`;
-
-  // const { data, isLoading } = useFetch(userUrl);
-  // const dataKey = data?.data?.keyData;
-
-  // console.log('Affichage des données API: ', dataKey);
-
-  const { isLoading, data, dataKey, score } = UserMainData();
+  const { isLoading, data, keyData } = UserMainData();
   const { dataAverageSession } = UserAverageSessionsData();
   const { dataActivity } = UserActivityData();
   const { dataPerformance } = UserPerformanceData();
@@ -84,7 +77,8 @@ function HomePage() {
   // const i = dataTest?.data;
   // const j = i?.data;
   // const voyons = test?.sessions;
-  console.log('braaa:', score);
+  // const y = data?.data?.keyData;
+  console.log('111111:', keyData);
   return (
     <HomeContainer>
       <NavBar />
@@ -107,26 +101,26 @@ function HomePage() {
             <CaloriesContainer>
               <CompletaryData
                 img={cKalImg}
-                data={dataKey.calorieCount}
+                value={keyData?.calorieCount}
                 unit="kCal"
                 subtitle="Calories"
               />
               <CompletaryData
                 img={proteinImg}
-                data={dataKey.proteinCount}
+                value={keyData?.proteinCount}
                 unit="g"
                 subtitle="Protéines"
               />
               <CompletaryData
                 img={carbsImg}
-                data={dataKey.carbohydrateCount}
+                value={keyData?.carbohydrateCount}
                 unit="g"
                 subtitle="Glucides"
               />
 
               <CompletaryData
                 img={fatImg}
-                data={dataKey.lipidCount}
+                value={keyData?.lipidCount}
                 unit="g"
                 subtitle="Lipides"
               />

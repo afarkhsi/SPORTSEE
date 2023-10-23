@@ -1,7 +1,7 @@
 /**En tant qu’utilisateur, je veux voir mon score moyen sous forme d’un RadialBarChart. */
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { USER_MAIN_DATA } from '../../mockData';
+// import { USER_MAIN_DATA } from '../../mockData';
 import styled from 'styled-components';
 import './style.css';
 
