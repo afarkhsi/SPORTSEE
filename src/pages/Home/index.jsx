@@ -89,7 +89,7 @@ function HomePage() {
       ) : (
         <BodyContainer className="body_container">
           <CardInfo data={data} />
-          <ChartsWrapper>
+          <ChartsWrapper className="body_container_charts">
             <ChartsContainer>
               <BarChartComponent data={dataActivity} />
               <ChartsContainerBlock className="default_class_chart">

@@ -16,9 +16,6 @@ const PieCHartContainer = styled.div`
 
 const PieChartTitle = styled.h1`
   position: absolute;
-  top: 15px;
-  font-size: 15px;
-  left: 40px;
   z-index: 1;
 `;
 
@@ -43,8 +40,8 @@ export default function RadialChartComponent(props) {
   ];
 
   return (
-    <PieCHartContainer className="piedchart-container">
-      <PieChartTitle className="piedchart-container_title">Score</PieChartTitle>
+    <PieCHartContainer className="piechart-container">
+      <PieChartTitle className="piechart-container_title">Score</PieChartTitle>
       <ResponsiveContainer
         className="triple-chart-responsive"
         width="100%"
@@ -74,13 +71,11 @@ export default function RadialChartComponent(props) {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-      <PieChartScoreText className="piedchart-container_score">
-        <span className="piedchart-container_score_value">
+      <PieChartScoreText className="piechart-container_score">
+        <span className="piechart-container_score_value">
           {100 * dataScore} %
         </span>
-        <span className="piedchart-container_score_text">
-          de votre objectif
-        </span>
+        <span className="piechart-container_score_text">de votre objectif</span>
       </PieChartScoreText>
     </PieCHartContainer>
   );

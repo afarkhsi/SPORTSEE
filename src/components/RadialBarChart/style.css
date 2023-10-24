@@ -1,10 +1,24 @@
-.piedchart-container_score_value {
+.piechart-container_title {
+  top: 15px;
+  font-size: 15px;
+  left: 40px;
+}
+
+.piechart-container_score_value {
   font-size: 24px;
   font-weight: bold;
 }
-.piedchart-container_score_text {
+.piechart-container_score_text {
   font-size: 16px;
   color: #5e5f5f;
   text-align: center;
   font-weight: 500;
+}
+
+@media only screen and (width <= 1150px) {
+  .piechart-container_title {
+    top: -1px;
+    font-size: 13px;
+    left: 11px;
+  }
 }
