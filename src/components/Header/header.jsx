@@ -30,7 +30,7 @@ const StyledLink = styled(NavLink)`
   font-weight: 500;
 `;
 
-// Function generating Header in all pages
+// Function generating Header Component in all pages
 function Header() {
   return (
     <NavContainer className="header">
@@ -38,13 +38,6 @@ function Header() {
         <HomeLogo className="header_logo_img" src={Logo} alt="Kasa logo" />
       </Link>
       <div className="header_nav">
-        {/* <StyledLink to="/" className="header_logo">
-          <HomeLogo
-            className="header_logo_img"
-            src={Logo}
-            alt="SportSee logo"
-          />
-        </StyledLink> */}
         <StyledLink to="/" className="header_nav_link">
           Accueil
         </StyledLink>

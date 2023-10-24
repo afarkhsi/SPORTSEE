@@ -16,8 +16,9 @@ import {
   UserActivityData,
   UserAverageSessionsData,
   UserPerformanceData,
+  UserMainData,
 } from '../../utils/hooks/Api';
-import { UserMainData } from '../../utils/hooks/Api';
+import ErrorMessage from '../../components/Error/error';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -34,6 +35,7 @@ const LoaderWrapper = styled.div`
   position: absolute;
   right: 50%;
   top: 50%;
+  color: #e60000;
 `;
 
 const BodyContainer = styled.section`
@@ -75,12 +77,18 @@ function HomePage() {
   const { dataActivity } = UserActivityData();
   const { dataPerformance } = UserPerformanceData();
 
+  if (!data || !dataAverageSession || !dataActivity || !dataPerformance) {
+    return <ErrorMessage />;
+  }
+
   return (
     <HomeContainer>
       <NavBar />
       {isLoading ? (
         <LoaderWrapper className="loader">
           <Loader />
+          <br />
+          Chargement de la page ...
         </LoaderWrapper>
       ) : (
         <BodyContainer className="body_container">

@@ -1,4 +1,3 @@
-// import React, { PureComponent } from 'react';
 import {
   BarChart,
   Bar,
@@ -12,13 +11,10 @@ import {
 } from 'recharts';
 import './style.css';
 
-// import { USER_ACTIVITY } from '../../mockData';
-
+// Function generating Component BarChart Activity
 const BarChartComponent = (props) => {
   const data = props.data;
   const dataActivity = data?.sessions;
-
-  // console.log('younamar: ', dataActivity);
 
   const dayData = () => {
     return dataActivity.map((session, index) => index + 1);
@@ -49,7 +45,6 @@ const BarChartComponent = (props) => {
     }
   };
 
-  console.log(dayData);
   return (
     <ResponsiveContainer width="99%" height="100%">
       <BarChart

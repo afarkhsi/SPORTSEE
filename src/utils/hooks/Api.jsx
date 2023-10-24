@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const apiUrl = 'http://localhost:3000';
 const userId = '12';
 
-// Fetch data
+// Hook Fetch data
 function useFetch(url) {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -15,7 +15,6 @@ function useFetch(url) {
     const fetchData = async () => {
       const response = await fetch(url);
       const json = await response.json();
-      // console.log('Affichage des données API: ', json);
       if (response.ok) {
         setData(json);
         setLoading(false);

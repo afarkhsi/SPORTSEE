@@ -1,7 +1,6 @@
 /**En tant qu’utilisateur, je veux voir mon score moyen sous forme d’un RadialBarChart. */
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-// import { USER_MAIN_DATA } from '../../mockData';
 import styled from 'styled-components';
 import './style.css';
 
@@ -33,16 +32,10 @@ const PieChartScoreText = styled.div`
   width: 100%;
 `;
 
+// Function generating Component RadialChart Score
 export default function RadialChartComponent(props) {
   const data = props.data;
-
-  // function test(scoreData) {
-  //   return scoreData.score || scoreData.todayScore;
-  // }
-
   const dataScore = data?.data?.score || data?.data?.todayScore;
-  console.log('lets stay:', dataScore);
-  // const score = USER_MAIN_DATA[0].todayScore;
 
   const pieData = [
     { name: 'completed', value: dataScore, fillColor: `#FF0000` },

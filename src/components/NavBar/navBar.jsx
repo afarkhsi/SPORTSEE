@@ -28,6 +28,8 @@ const NavBarCopyright = styled.small`
   transform: rotate(270deg);
   color: white;
 `;
+
+// Function generating Component Navbar in left
 function NavBar() {
   return (
     <NavBarContainer>

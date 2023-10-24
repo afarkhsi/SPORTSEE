@@ -8,6 +8,7 @@ import {
 } from 'recharts';
 import './style.css';
 
+// Function generating Component RadarChart
 const RadarChartComponent = (props) => {
   const data = props.data;
   const dataPerformance = data?.data;
@@ -29,8 +30,6 @@ const RadarChartComponent = (props) => {
         kind: kindData[dataValue.kind],
       }))
       .reverse();
-
-  console.log(formatData);
 
   return (
     <ResponsiveContainer width="100%" height="100%">

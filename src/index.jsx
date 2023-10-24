@@ -5,6 +5,7 @@ import './index.css';
 import HomePage from './pages/Home';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/Header/header';
+// import Error from './components/Error/error';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

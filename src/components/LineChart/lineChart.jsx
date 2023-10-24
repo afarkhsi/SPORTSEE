@@ -12,10 +12,10 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+// Function generating Component Linechart Average Sessions
 export default function LineChartComponent(props) {
   const data = props.data;
   const dataSessions = data?.sessions;
-  console.log('bordeldelel:', data);
   const tabDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
   const renderTooltip = ({ active, payload }) => {
     if (active && payload.length) {

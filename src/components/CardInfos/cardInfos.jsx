@@ -1,6 +1,5 @@
 /**En tant qu’utilisateur, je veux pouvoir voir mes informations clés sous forme de card. Chaque card comprend un icône, des protéines, etc. */
 import styled from 'styled-components';
-// import { USER_MAIN_DATA } from '../../mockData';
 
 const CardInfoContainer = styled.article``;
 
@@ -18,12 +17,11 @@ const CardFirstname = styled.span`
   color: #e60000;
 `;
 
+// Function generating Component User informations
 const CardInfo = (props) => {
   const data = props.data;
   const dataUserInfo = data?.data?.userInfos;
   const firstName = dataUserInfo?.firstName;
-  // const lastName = USER_MAIN_DATA[0].userInfos.lastName;
-  // console.log(dataTest);
   return (
     <CardInfoContainer>
       <CardInfoTitle>
