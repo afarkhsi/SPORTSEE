@@ -6,18 +6,59 @@
   gap: 1rem;
 }
 
+.complementary_container {
+  max-width: 250px;
+  width: 100%;
+  min-width: 190px;
+}
+
 .sc-bCwene {
   gap: 2.5rem;
 }
 
+.recharts-responsive-container {
+  max-height: 320px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+
+.recharts-polar-angle-axis-tick {
+  font-size: 10px;
+}
+
+.fTDMVF {
+  gap: 2rem;
+}
+
 @media only screen and (width <= 1251px) {
-  .radarchart_wrapper svg {
-    height: 255px;
-  }
   .default_class_chart {
     gap: 0.5rem;
   }
   .sc-bCwene {
     gap: 0;
+  }
+  .complementary_container {
+    max-width: 230px;
+  }
+}
+
+@media only screen and (width <= 1150px) {
+  .fTDMVF {
+    gap: 1rem;
+  }
+  .triple-chart-responsive {
+    max-height: 190px;
+  }
+  .barcharts-responsive-container {
+    max-height: 250px;
+  }
+  .recharts-polar-angle-axis-tick {
+    font-size: 9px;
+  }
+  .default_class_chart {
+    max-height: 190px;
+  }
+  .complementary_container {
+    max-width: 200px;
   }
 }

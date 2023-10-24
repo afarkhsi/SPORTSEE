@@ -47,7 +47,6 @@ const BodyContainer = styled.section`
 
 const ChartsWrapper = styled.div`
   display: flex;
-  gap: 2rem;
   margin: 70px auto 0px auto;
   justify-content: space-between;
 `;
@@ -66,9 +65,6 @@ const CaloriesContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
-  max-width: 250px;
-  width: 100%;
-  min-width: 190px;
 `;
 
 function HomePage() {
@@ -102,7 +98,7 @@ function HomePage() {
                 <RadialChartComponent data={data} />
               </ChartsContainerBlock>
             </ChartsContainer>
-            <CaloriesContainer>
+            <CaloriesContainer className="complementary_container">
               <CompletaryData
                 img={cKalImg}
                 value={keyData?.calorieCount}

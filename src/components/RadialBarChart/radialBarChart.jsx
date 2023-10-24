@@ -45,7 +45,11 @@ export default function RadialChartComponent(props) {
   return (
     <PieCHartContainer className="piedchart-container">
       <PieChartTitle className="piedchart-container_title">Score</PieChartTitle>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer
+        className="triple-chart-responsive"
+        width="100%"
+        height="100%"
+      >
         <PieChart>
           <Pie
             data={pieData}

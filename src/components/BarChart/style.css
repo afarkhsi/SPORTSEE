@@ -1,8 +1,16 @@
-.recharts-responsive-container {
-  max-height: 320px;
-  background-color: #fbfbfb;
-  border-radius: 5px;
-}
 .recharts-default-legend {
   font-size: 14px;
+}
+
+.barChart_title {
+  font-size: 15px;
+}
+
+@media only screen and (width <= 1150px) {
+  .barChart_title {
+    font-size: 12px;
+  }
+  .recharts-default-legend {
+    font-size: 12px;
+  }
 }

@@ -32,7 +32,11 @@ const RadarChartComponent = (props) => {
       .reverse();
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer
+      className="triple-chart-responsive"
+      width="100%"
+      height="100%"
+    >
       <RadarChart
         className="radarchart_wrapper"
         cx="50%"
@@ -44,7 +48,7 @@ const RadarChartComponent = (props) => {
         <PolarAngleAxis
           dataKey="kind"
           tickLine={false}
-          tick={{ fontSize: '10px', fontWeight: '500' }}
+          // tick={{ fontSize: '10px', fontWeight: '500' }}
           stroke="#FFFFFF"
         />
         <Radar

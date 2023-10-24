@@ -46,7 +46,11 @@ const BarChartComponent = (props) => {
   };
 
   return (
-    <ResponsiveContainer width="99%" height="100%">
+    <ResponsiveContainer
+      className="barcharts-responsive-container"
+      width="99%"
+      height="100%"
+    >
       <BarChart
         className="barchart_wrapper"
         barSize={10}
@@ -84,10 +88,12 @@ const BarChartComponent = (props) => {
           domain={['dataMin - 5', 'auto']}
         />
         <text
+          className="barChart_title"
           x="10%"
           y="10%"
-          dy={-15}
-          style={{ fontSize: 15, fontWeight: 'bold', fill: '#20253A' }}
+          dy={-14}
+          padding={{ left: 20 }}
+          style={{ fontWeight: 'bold', fill: '#20253A' }}
           width={200}
           height={30}
           scaletofit="true"
@@ -101,7 +107,7 @@ const BarChartComponent = (props) => {
           className="legend-size"
           align="right"
           verticalAlign="top"
-          height={90}
+          height={80}
           iconType="circle"
           iconSize={8}
         />

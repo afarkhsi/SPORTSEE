@@ -16,4 +16,14 @@
   position: absolute;
   bottom: 140px;
   left: 20px;
+  font-size: 15px;
+}
+
+@media only screen and (width <= 1150px) {
+  .linechart_wrapper_title {
+    position: absolute;
+    bottom: 96px;
+    left: 20px;
+    font-size: 12px;
+  }
 }

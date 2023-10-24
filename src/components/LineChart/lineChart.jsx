@@ -48,7 +48,6 @@ export default function LineChartComponent(props) {
           height: '60px',
           margin: '10px',
           textAlign: 'start',
-          fontSize: '15px',
           fontWeight: '400',
         }}
       >
@@ -59,7 +58,11 @@ export default function LineChartComponent(props) {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer
+      className="triple-chart-responsive"
+      width="100%"
+      height="100%"
+    >
       <LineChart
         className="linechart_wrapper"
         data={dataSessions}
