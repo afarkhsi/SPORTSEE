@@ -14,8 +14,8 @@ Vous travaillez en tant que développeur chez SportSee, une startup dédiée au 
 
 ### Ressources
 
-- Maquette [Figma] (https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?type=design&node-id=1-2&mode=design&t=wj5G3Pm4Tl97gkpk-0)
-- [Kanban] des user stories (https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e?p=f83bcc5efa944de2b23f63bbeb5445d1&pm=s)
+- [Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?type=design&node-id=1-2&mode=design&t=wj5G3Pm4Tl97gkpk-0)
+- [Kanban](https://openclassrooms.notion.site/Tableau-de-bord-SportSee-6686aa4b5f44417881a4884c9af5669e?p=f83bcc5efa944de2b23f63bbeb5445d1&pm=s)
 
 ## Installation
 
@@ -31,7 +31,7 @@ Vous travaillez en tant que développeur chez SportSee, une startup dédiée au 
 - La commande `yarn` vous permettra d'installer les dépendances liée à ce repository
 - La commande `yarn dev` vous permettra par la suite de lancer la micro API.
 - La micro API est lancée sur `http://localhost:3000`
-- Liste des endpoints de la MICRO [API](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
+- [Endpoints](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
 
 ### Installation du front-end
 
