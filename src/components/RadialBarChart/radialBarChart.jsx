@@ -11,7 +11,7 @@ const PieCHartContainer = styled.div`
   justify-content: center;
   align-items: center;
   width="100%";
-  background-color: #FBFBFB;
+  // background-color: #FBFBFB;
   min-width: 0%;
 `;
 
@@ -20,6 +20,7 @@ const PieChartTitle = styled.h1`
   top: 15px;
   font-size: 15px;
   left: 40px;
+  z-index: 1;
 `;
 
 const PieChartScoreText = styled.div`
@@ -45,7 +46,7 @@ export default function RadialChartComponent(props) {
 
   const pieData = [
     { name: 'completed', value: dataScore, fillColor: `#FF0000` },
-    { name: 'not-completed', value: 1 - dataScore, fillColor: 'transparent' },
+    { name: 'not-completed', value: 1 - dataScore, fillColor: '#FBFBFB' },
   ];
 
   return (

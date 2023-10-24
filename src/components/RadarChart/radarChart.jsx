@@ -7,7 +7,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import './style.css';
-// import { USER_PERFORMANCE } from '../../mockData';
 
 const RadarChartComponent = (props) => {
   const data = props.data;
@@ -42,11 +41,11 @@ const RadarChartComponent = (props) => {
         outerRadius="80%"
         data={formatData}
       >
-        <PolarGrid />
+        <PolarGrid gridType="polygon" radialLines={false} />
         <PolarAngleAxis
           dataKey="kind"
           tickLine={false}
-          tick={{ fontSize: '12px', fontWeight: '500' }}
+          tick={{ fontSize: '10px', fontWeight: '500' }}
           stroke="#FFFFFF"
         />
         <Radar

@@ -6,7 +6,6 @@ const CompletaryDataContainer = styled.div`
   gap: 1rem;
   padding: 0px 15px 0px 15px;
   background-color: #fbfbfb;
-  width: 250px;
 `;
 const CompletaryImg = styled.img``;
 
@@ -26,7 +25,7 @@ const CompletaryData = (props) => {
   const { value, unit, subtitle, img } = props;
   // const data = props.dataKey;
 
-  console.log('25465:', value);
+  // console.log('25465:', value);
 
   return (
     <CompletaryDataContainer>

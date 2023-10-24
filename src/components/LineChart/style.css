@@ -11,8 +11,9 @@
   font-weight: bold;
   border-radius: 2px;
 }
-.test {
-  color: black;
-  height: 100%;
-  width: 20%;
+
+.linechart_wrapper_title {
+  position: absolute;
+  bottom: 140px;
+  left: 20px;
 }

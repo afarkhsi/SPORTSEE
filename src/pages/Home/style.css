@@ -2,4 +2,22 @@
   height: 260px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  width: 99%;
+  gap: 1rem;
+}
+
+.sc-bCwene {
+  gap: 2.5rem;
+}
+
+@media only screen and (width <= 1251px) {
+  .radarchart_wrapper svg {
+    height: 255px;
+  }
+  .default_class_chart {
+    gap: 0.5rem;
+  }
+  .sc-bCwene {
+    gap: 0;
+  }
 }

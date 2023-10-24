@@ -18,15 +18,40 @@ const BarChartComponent = (props) => {
   const data = props.data;
   const dataActivity = data?.sessions;
 
-  console.log('younamar: ', dataActivity);
+  // console.log('younamar: ', dataActivity);
 
   const dayData = () => {
     return dataActivity.map((session, index) => index + 1);
   };
+  const renderTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          className="barchart_wrapper_info"
+          style={{
+            background: '#ff0000',
+            color: '#ffffff',
+            height: '80px',
+            width: '60px',
+            margin: '10px',
+            textAlign: 'center',
+            fontSize: '12px',
+            fontWeight: 'bold',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <p className="barchart_wrapper_info_kg">{payload[0].value}kg</p>
+          <p className="barchart_wrapper_info_kcal">{payload[1].value}Kcal</p>
+        </div>
+      );
+    }
+  };
 
   console.log(dayData);
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="99%" height="100%">
       <BarChart
         className="barchart_wrapper"
         barSize={10}
@@ -76,7 +101,7 @@ const BarChartComponent = (props) => {
         >
           Activité quotidienne
         </text>
-        <Tooltip background="black" />
+        <Tooltip content={renderTooltip} />
         <Legend
           className="legend-size"
           align="right"

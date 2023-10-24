@@ -12,7 +12,8 @@ const NavContainer = styled.nav`
   // justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
-  height: 91px;
+  height: 8%;
+  min-height: 80px;
   // margin: 0 auto;
   // width: 100%;
   background-color: black;

@@ -6,8 +6,7 @@ import GymLogo from '../../assets/gym.svg';
 import './style.css';
 
 const NavBarContainer = styled.section`
-  max-width: 117px;
-  width: 100%;
+  min-width: 117px;
   background-color: black;
   display: flex;
   flex-direction: column;

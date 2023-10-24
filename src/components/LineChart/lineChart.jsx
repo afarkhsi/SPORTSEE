@@ -16,7 +16,7 @@ export default function LineChartComponent(props) {
   const data = props.data;
   const dataSessions = data?.sessions;
   console.log('bordeldelel:', data);
-  const tabTest = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const tabDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
   const renderTooltip = ({ active, payload }) => {
     if (active && payload.length) {
       return (
@@ -36,6 +36,26 @@ export default function LineChartComponent(props) {
         </div>
       );
     }
+  };
+
+  const renderLegend = () => {
+    return (
+      <div
+        className="linechart_wrapper_title"
+        style={{
+          color: 'white',
+          opacity: '0.7',
+          height: '60px',
+          margin: '10px',
+          textAlign: 'start',
+          fontSize: '15px',
+          fontWeight: '400',
+        }}
+      >
+        Durée moyenne <br />
+        des sessions
+      </div>
+    );
   };
 
   return (
@@ -66,26 +86,12 @@ export default function LineChartComponent(props) {
           style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
           axisLine={false}
           tickLine={false}
-          tickFormatter={(day) => tabTest[day - 1]}
+          tickFormatter={(day) => tabDays[day - 1]}
           tick={{ fill: '#FFFFFF', opacity: '0.5' }}
           tickSize={12}
           padding={{ left: 20, right: 20 }}
         />
         <YAxis hide={true} />
-        <text
-          x="36%"
-          y="30%"
-          dy={0}
-          style={{ fontSize: 15, fontWeight: 500, fill: '#FFFFFF' }}
-          width={50}
-          opacity={0.7}
-          height={100}
-          scaletofit="true"
-          textAnchor="middle"
-          verticalanchor="middle"
-        >
-          Durée moyenne des sessions
-        </text>
         <Tooltip
           content={renderTooltip}
           position={{ y: 0 }}
@@ -96,7 +102,7 @@ export default function LineChartComponent(props) {
             height: '100%',
           }}
         />
-        <Legend />
+        <Legend content={renderLegend} />
         <Line
           type="bump"
           dataKey="sessionLength"
@@ -110,68 +116,4 @@ export default function LineChartComponent(props) {
       </LineChart>
     </ResponsiveContainer>
   );
-
-  //   <LineChart
-  //     className="linechart_wrapper"
-  //     width={260}
-  //     height={260}
-  //     data={dataTest}
-  //     margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
-  //   >
-  //     <defs>
-  //       <linearGradient id="lineGradient">
-  //         <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
-  //         <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
-  //       </linearGradient>
-  //     </defs>
-  //     <text
-  //       x={10}
-  //       y={30}
-  //       textAnchor="left"
-  //       style={{
-  //         fontSize: '1.8rem',
-  //         fontWeight: 500,
-  //         fill: '#FFFFFF',
-  //         fillOpacity: '50%',
-  //       }}
-  //     >
-  //       Durée moyenne des sessions
-  //     </text>
-  //     <XAxis
-  //       dataKey="day"
-  //       axisLine={false}
-  //       tickLine={false}
-  //       tick={{ fill: '#FFFFFF', fillOpacity: '50%' }}
-  //       stroke="#FFFFFF"
-  //       tickMargin={10}
-  //       tickFormatter={(day) => tabTest[day - 1]}
-  //     />
-  //     <YAxis
-  //       dataKey="sessionLength"
-  //       hide={true}
-  //       domain={['dataMin -20', 'dataMax + 50']}
-  //     />
-  //     <Line
-  //       dataKey="sessionLength"
-  //       type="natural"
-  //       stroke="url(#lineGradient)"
-  //       strokeWidth={2.5}
-  //       dot={false}
-  //       activeDot={{
-  //         stroke: '#FFFFFF',
-  //         strokeOpacity: '50%',
-  //         strokeWidth: 10,
-  //       }}
-  //     />
-  //     <Tooltip
-  //       content={renderTooltip}
-  //       cursor={{
-  //         stroke: '#000000',
-  //         strokeOpacity: '10%',
-  //         strokeWidth: '20%',
-  //         height: '100%',
-  //       }}
-  //     />
-  //   </LineChart>
-  // );
 }

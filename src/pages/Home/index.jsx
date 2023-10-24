@@ -7,7 +7,6 @@ import RadarChartComponent from '../../components/RadarChart/radarChart';
 import RadialChartComponent from '../../components/RadialBarChart/radialBarChart';
 import LineChartComponent from '../../components/LineChart/lineChart';
 import CompletaryData from '../../components/ComplementaryData/complementaryData';
-// import { USER_MAIN_DATA } from '../../mockData';
 import cKalImg from '../../assets/calories-icon.svg';
 import fatImg from '../../assets/fat-icon.svg';
 import carbsImg from '../../assets/carbs-icon.svg';
@@ -23,8 +22,8 @@ import { UserMainData } from '../../utils/hooks/Api';
 const HomeContainer = styled.div`
   position: relative;
   display: flex;
-  max-width: 1440px;
   width: 100%;
+  height: 92%;
 `;
 
 const LoaderWrapper = styled.div`
@@ -38,15 +37,17 @@ const LoaderWrapper = styled.div`
 `;
 
 const BodyContainer = styled.section`
-  margin: auto auto auto 50px;
-  max-width: 1440px;
+  margin: auto;
   width: 100%;
+  max-width: 1440px;
+  padding: 0 1.5rem;
 `;
 
 const ChartsWrapper = styled.div`
   display: flex;
   gap: 2rem;
-  margin: 70px auto;
+  margin: 70px auto 0px auto;
+  justify-content: space-between;
 `;
 
 const ChartsContainer = styled.div`
@@ -56,15 +57,16 @@ const ChartsContainer = styled.div`
   flex-direction: column;
 `;
 
-const ChartsContainerBlock = styled.div`
-  gap: 1.5rem;
-`;
+const ChartsContainerBlock = styled.div``;
 
 const CaloriesContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
+  max-width: 250px;
+  width: 100%;
+  min-width: 190px;
 `;
 
 function HomePage() {
@@ -73,12 +75,6 @@ function HomePage() {
   const { dataActivity } = UserActivityData();
   const { dataPerformance } = UserPerformanceData();
 
-  // const dataTest = useFetch('http://localhost:3000/user/12/average-sessions');
-  // const i = dataTest?.data;
-  // const j = i?.data;
-  // const voyons = test?.sessions;
-  // const y = data?.data?.keyData;
-  console.log('111111:', keyData);
   return (
     <HomeContainer>
       <NavBar />

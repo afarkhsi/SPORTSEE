@@ -36,13 +36,13 @@ export const UserMainData = () => {
   const { data, isLoading } = useFetch(url);
   const keyData = data?.data?.keyData;
 
-  console.log('Affichage des données API DATAKEY: ', keyData);
+  // console.log('Affichage des données API DATAKEY: ', keyData);
   return { isLoading, data, keyData };
 };
 
 export const UserActivityData = () => {
-  // const url = `${apiUrl}/user/${userId}/activity`;
-  const url = `./mockDataActivity.json`;
+  const url = `${apiUrl}/user/${userId}/activity`;
+  // const url = `./mockDataActivity.json`;
 
   const { data } = useFetch(url);
   const dataActivity = data?.data;
@@ -55,8 +55,8 @@ export const UserActivityData = () => {
 };
 
 export const UserAverageSessionsData = () => {
-  // const url = `${apiUrl}/user/${userId}/average-sessions`;
-  const url = `./mockDataAverageSessions.json`;
+  const url = `${apiUrl}/user/${userId}/average-sessions`;
+  // const url = `./mockDataAverageSessions.json`;
 
   const { data } = useFetch(url);
   const dataAverageSession = data?.data;
@@ -66,8 +66,8 @@ export const UserAverageSessionsData = () => {
 };
 
 export const UserPerformanceData = () => {
-  // const url = `${apiUrl}/user/${userId}/performance`;
-  const url = `./mockDataPerformance.json`;
+  const url = `${apiUrl}/user/${userId}/performance`;
+  // const url = `./mockDataPerformance.json`;
 
   const { data } = useFetch(url);
   const dataPerformance = data?.data;
