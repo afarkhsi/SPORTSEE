@@ -31,7 +31,7 @@ Vous travaillez en tant que développeur chez SportSee, une startup dédiée au 
 - La commande `yarn` vous permettra d'installer les dépendances liée à ce repository
 - La commande `yarn dev` vous permettra par la suite de lancer la micro API.
 - La micro API est lancée sur `http://localhost:3000`
-- Liste des endpoints de la MICRO [API](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
+- [Endpoints](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard#41-possible-endpoints)
 
 ### Installation du front-end
 
