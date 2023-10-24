@@ -39,7 +39,7 @@ const LoaderWrapper = styled.div`
 const BodyContainer = styled.section`
   margin: auto;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   padding: 0 1.5rem;
 `;
 

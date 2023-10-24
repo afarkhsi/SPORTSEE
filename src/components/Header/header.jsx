@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../assets/logo.svg';
 import './style.css';
@@ -34,17 +34,17 @@ const StyledLink = styled(NavLink)`
 function Header() {
   return (
     <NavContainer className="header">
-      {/* <Link className="header_logo" to="/">
+      <Link className="header_logo" to="/">
         <HomeLogo className="header_logo_img" src={Logo} alt="Kasa logo" />
-      </Link> */}
+      </Link>
       <div className="header_nav">
-        <StyledLink to="/" className="header_logo">
+        {/* <StyledLink to="/" className="header_logo">
           <HomeLogo
             className="header_logo_img"
             src={Logo}
             alt="SportSee logo"
           />
-        </StyledLink>
+        </StyledLink> */}
         <StyledLink to="/" className="header_nav_link">
           Accueil
         </StyledLink>
