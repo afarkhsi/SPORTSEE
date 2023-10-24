@@ -31,49 +31,31 @@ function useFetch(url) {
 export const UserMainData = () => {
   const url = `${apiUrl}/user/${userId}`;
   // const url = `./mockDataUser.json`;
-
   const { data, isLoading } = useFetch(url);
   const keyData = data?.data?.keyData;
-
-  // console.log('Affichage des données API DATAKEY: ', keyData);
   return { isLoading, data, keyData };
 };
 
 export const UserActivityData = () => {
   const url = `${apiUrl}/user/${userId}/activity`;
   // const url = `./mockDataActivity.json`;
-
   const { data } = useFetch(url);
   const dataActivity = data?.data;
-
-  // console.log(
-  //   'Affichage des données API ACTIVITYDATA: ',
-  //   dataActivity?.sessions
-  // );
   return { dataActivity };
 };
 
 export const UserAverageSessionsData = () => {
   const url = `${apiUrl}/user/${userId}/average-sessions`;
   // const url = `./mockDataAverageSessions.json`;
-
   const { data } = useFetch(url);
   const dataAverageSession = data?.data;
-
-  // console.log('Affichage des données API AVERAGESESSIONDATA: ', url);
   return { dataAverageSession };
 };
 
 export const UserPerformanceData = () => {
   const url = `${apiUrl}/user/${userId}/performance`;
   // const url = `./mockDataPerformance.json`;
-
   const { data } = useFetch(url);
   const dataPerformance = data?.data;
-
-  // console.log(
-  //   'Affichage des données API AVERAGESESSIONDATA: ',
-  //   dataPerformance?.sessions
-  // );
   return { dataPerformance };
 };
