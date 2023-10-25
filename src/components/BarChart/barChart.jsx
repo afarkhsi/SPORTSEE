@@ -19,6 +19,7 @@ const BarChartComponent = (props) => {
   const dayData = () => {
     return dataActivity.map((session, index) => index + 1);
   };
+
   const renderTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (

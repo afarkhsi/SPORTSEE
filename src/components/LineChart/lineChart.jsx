@@ -13,9 +13,7 @@ import {
 } from 'recharts';
 
 // Function generating Component Linechart Average Sessions
-export default function LineChartComponent(props) {
-  const data = props.data;
-  const dataSessions = data?.sessions;
+export default function LineChartComponent({ data }) {
   const tabDays = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
   const renderTooltip = ({ active, payload }) => {
     if (active && payload.length) {
@@ -65,7 +63,7 @@ export default function LineChartComponent(props) {
     >
       <LineChart
         className="linechart_wrapper"
-        data={dataSessions}
+        data={data}
         margin={{
           top: 5,
           right: 0,

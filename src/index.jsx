@@ -5,7 +5,9 @@ import './index.css';
 import HomePage from './pages/Home';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/Header/header';
+import UsersSelect from './pages/Users';
 // import Error from './components/Error/error';
+import Login from './components/UserButton/UserButton';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +15,9 @@ root.render(
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<Login />} /> */}
+        <Route path="/" element={<UsersSelect />} />
+        <Route path="/user/:userId" element={<HomePage />} />
       </Routes>
     </Router>
   </React.StrictMode>

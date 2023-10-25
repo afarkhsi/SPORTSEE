@@ -1,9 +1,8 @@
 import './style.css';
 import NavBar from '../../components/NavBar/navBar';
 import styled from 'styled-components';
-import CardInfo from '../../components/CardInfos/cardInfos';
+import CardInfo from '../../components/CardInfos/CardInfos';
 import BarChartComponent from '../../components/BarChart/barChart';
-import RadarChartComponent from '../../components/RadarChart/radarChart';
 import RadialChartComponent from '../../components/RadialBarChart/radialBarChart';
 import LineChartComponent from '../../components/LineChart/lineChart';
 import CompletaryData from '../../components/ComplementaryData/complementaryData';
@@ -15,10 +14,12 @@ import { Loader } from '../../utils/styles/Atoms';
 import {
   UserActivityData,
   UserAverageSessionsData,
-  UserPerformanceData,
   UserMainData,
-} from '../../utils/hooks/Api';
+} from '../../utils/hooks/useFetch';
 import ErrorMessage from '../../components/Error/error';
+import PerformanceChart from './PerformanceChart/PerformanceChart';
+import { useLocation } from 'react-router-dom';
+import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -69,13 +70,16 @@ const CaloriesContainer = styled.div`
 
 function HomePage() {
   const { isLoading, data, keyData } = UserMainData();
-  const { dataAverageSession } = UserAverageSessionsData();
   const { dataActivity } = UserActivityData();
-  const { dataPerformance } = UserPerformanceData();
 
-  if (!data || !dataAverageSession || !dataActivity || !dataPerformance) {
-    return <ErrorMessage />;
-  }
+  // if (location?.state?.userId == null) {
+  //   return <div>EROOOR</div>;
+  // }
+  // const { dataPerformance } = UserPerformanceData();
+
+  // if (!data || !dataAverageSession || !dataActivity) {
+  //   return <ErrorMessage />;
+  // }
 
   return (
     <HomeContainer>
@@ -93,8 +97,8 @@ function HomePage() {
             <ChartsContainer>
               <BarChartComponent data={dataActivity} />
               <ChartsContainerBlock className="default_class_chart">
-                <LineChartComponent data={dataAverageSession} />
-                <RadarChartComponent data={dataPerformance} />
+                <AverageSessionsChart />
+                <PerformanceChart />
                 <RadialChartComponent data={data} />
               </ChartsContainerBlock>
             </ChartsContainer>
