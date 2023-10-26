@@ -8,7 +8,7 @@ const useLineChart = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}/average-sessions`;
-  const mockedUrl = '../../../mockDataAverageSessions.json';
+  // const mockedUrl = '../../../mockDataAverageSessions.json';
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = data?.data?.sessions;

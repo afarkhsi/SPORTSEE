@@ -9,7 +9,7 @@ const usePerformanceChart = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}/performance`;
-  const mockedUrl = `../../../mockDataPerformance.json`;
+  // const mockedUrl = `../../../mockDataPerformance.json`;
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = new Adapter(data?.data?.data).performance();

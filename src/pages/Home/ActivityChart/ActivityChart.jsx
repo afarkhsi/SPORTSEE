@@ -9,7 +9,7 @@ const useActivityChart = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}/activity`;
-  const mockedUrl = `../../../mockDataActivity.json`;
+  // const mockedUrl = `../../../mockDataActivity.json`;
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = new Adapter(data?.data).activity();

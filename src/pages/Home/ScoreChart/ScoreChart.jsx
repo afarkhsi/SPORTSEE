@@ -33,7 +33,7 @@ const useScoreChart = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}`;
-  const mockedUrl = `../../../mockDataUser.json`;
+  // const mockedUrl = `../../../mockDataUser.json`;
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = new Adapter(data?.data).score();

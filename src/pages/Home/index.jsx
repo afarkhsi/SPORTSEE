@@ -66,7 +66,7 @@ const CaloriesContainer = styled.div`
 function HomePage() {
   const { userId } = useParams();
   const url = `${apiUrl}/user/${userId}`;
-  const mockedUrl = `../../../mockDataUser.json`;
+  // const mockedUrl = `../../../mockDataUser.json`;
   const { data, isLoading, error } = useFetch(url);
   const dataFormated = new Adapter(data?.data).completaryData();
 
