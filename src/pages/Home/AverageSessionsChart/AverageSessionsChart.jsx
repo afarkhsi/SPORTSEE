@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
 import LineChartComponent from '../../../components/LineChart/LineChart';
-import { LoaderContainer } from '../ScoreChart/ScoreChart';
+import { ErrorContainer, LoaderContainer } from '../ScoreChart/ScoreChart';
 import { Loader } from '../../../utils/styles/Atoms';
 
 const useLineChart = () => {
@@ -26,7 +26,7 @@ const AverageSessionsChart = () => {
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <ErrorContainer> Error! Cannot GET Sessions</ErrorContainer>;
   }
 
   return <LineChartComponent data={dataFormated} />;

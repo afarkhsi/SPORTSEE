@@ -12,6 +12,23 @@ export const LoaderContainer = styled.div`
   margin: auto;
 `;
 
+export const ErrorContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  background-color: rgba(247, 216, 15, 0.3);
+  // opacity: 0.2;
+  color: #7d6c00;
+  font-weight: 500;
+  font-size: 20px;
+  height: 20%;
+  border-radius: 5px;
+  border: 1px solid rgb(247, 216, 15);
+`;
+
 const useScoreChart = () => {
   const { userId } = useParams();
 
@@ -34,7 +51,7 @@ const ScoreChart = () => {
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <ErrorContainer> Error! Cannot GET Score</ErrorContainer>;
   }
 
   return <RadialChartComponent data={dataFormated} />;

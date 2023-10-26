@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import Adapter from '../../../utils/adapter/adapter';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import { LoaderContainer } from '../ScoreChart/ScoreChart';
+import { ErrorContainer, LoaderContainer } from '../ScoreChart/ScoreChart';
 import { Loader } from '../../../utils/styles/Atoms';
-import BarChartComponent from '../../../components/BarChart/BarChart';
+import BarChartComponent from '../../../components/BarChart/barChart';
 
 const useActivityChart = () => {
   const { userId } = useParams();
@@ -27,7 +27,7 @@ const ActivityChart = () => {
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <ErrorContainer> Error! Cannot GET Activity</ErrorContainer>;
   }
 
   return <BarChartComponent data={dataFormated} />;

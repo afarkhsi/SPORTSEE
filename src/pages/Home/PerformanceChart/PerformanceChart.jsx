@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import PerformanceRadarChart from '../../../components/PerformanceRadarChart/PerformanceRadarChart';
 import Adapter from '../../../utils/adapter/adapter';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import { LoaderContainer } from '../ScoreChart/ScoreChart';
+import { ErrorContainer, LoaderContainer } from '../ScoreChart/ScoreChart';
 import { Loader } from '../../../utils/styles/Atoms';
 
 const usePerformanceChart = () => {
@@ -27,9 +27,8 @@ const PerformanceChart = () => {
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <ErrorContainer> Error! Cannot GET Performance</ErrorContainer>;
   }
-
   return <PerformanceRadarChart data={dataFormated} />;
 };
 export default PerformanceChart;

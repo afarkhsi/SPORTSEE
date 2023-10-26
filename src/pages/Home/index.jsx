@@ -9,10 +9,10 @@ import proteinImg from '../../assets/protein-icon.svg';
 import { Loader } from '../../utils/styles/Atoms';
 import PerformanceChart from './PerformanceChart/PerformanceChart';
 import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
-import ScoreChart from './ScoreChart/ScoreChart';
+import ScoreChart, { ErrorContainer } from './ScoreChart/ScoreChart';
 import User from './User/User';
 import ActivityChart from './ActivityChart/ActivityChart';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useFetch, { apiUrl } from '../../utils/hooks/useFetch';
 import Adapter from '../../utils/adapter/adapter';
 
@@ -65,12 +65,10 @@ const CaloriesContainer = styled.div`
 
 function HomePage() {
   const { userId } = useParams();
-  const location = useLocation();
   const url = `${apiUrl}/user/${userId}`;
   const mockedUrl = `../../../mockDataUser.json`;
   const { data, isLoading, error } = useFetch(url);
   const dataFormated = new Adapter(data?.data).completaryData();
-  console.log('testo:', dataFormated);
 
   return (
     <HomeContainer>
@@ -93,32 +91,36 @@ function HomePage() {
                 <ScoreChart />
               </ChartsContainerBlock>
             </ChartsContainer>
-            <CaloriesContainer className="complementary_container">
-              <CompletaryData
-                img={cKalImg}
-                data={dataFormated?.calorieCount}
-                unit="kCal"
-                subtitle="Calories"
-              />
-              <CompletaryData
-                img={proteinImg}
-                data={dataFormated?.proteinCount}
-                unit="g"
-                subtitle="Protéines"
-              />
-              <CompletaryData
-                img={carbsImg}
-                data={dataFormated?.carbohydrateCount}
-                unit="g"
-                subtitle="Glucides"
-              />
-              <CompletaryData
-                img={fatImg}
-                data={dataFormated?.carbohydrateCount}
-                unit="g"
-                subtitle="Lipides"
-              />
-            </CaloriesContainer>
+            {error ? (
+              <ErrorContainer> Error! Cannot GET Consumption</ErrorContainer>
+            ) : (
+              <CaloriesContainer className="complementary_container">
+                <CompletaryData
+                  img={cKalImg}
+                  data={dataFormated?.calorieCount}
+                  unit="kCal"
+                  subtitle="Calories"
+                />
+                <CompletaryData
+                  img={proteinImg}
+                  data={dataFormated?.proteinCount}
+                  unit="g"
+                  subtitle="Protéines"
+                />
+                <CompletaryData
+                  img={carbsImg}
+                  data={dataFormated?.carbohydrateCount}
+                  unit="g"
+                  subtitle="Glucides"
+                />
+                <CompletaryData
+                  img={fatImg}
+                  data={dataFormated?.carbohydrateCount}
+                  unit="g"
+                  subtitle="Lipides"
+                />
+              </CaloriesContainer>
+            )}
           </ChartsWrapper>
         </BodyContainer>
       )}
