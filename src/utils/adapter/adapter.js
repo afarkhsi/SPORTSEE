@@ -22,17 +22,19 @@ class Adapter {
   }
 
   userInfo() {
-    const user = this.data?.userInfos?.firstName;
-    return user;
+    return this.data?.userInfos?.firstName;
   }
 
   score() {
-    const dataScore = this.data?.todayScore || this.data?.score;
-    return dataScore;
+    return this.data?.todayScore || this.data?.score;
+  }
+
+  completaryData() {
+    return this.data?.keyData;
   }
 
   activity() {
-    const dataActivity = this.data?.sessions;
+    return this.data?.sessions;
   }
 }
 

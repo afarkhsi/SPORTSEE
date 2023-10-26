@@ -3,7 +3,7 @@ import Adapter from '../../../utils/adapter/adapter';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
 import CardInfo from '../../../components/CardInfos/CardInfos';
 
-const useUser = () => {
+export const useUser = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}`;
@@ -11,7 +11,7 @@ const useUser = () => {
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = new Adapter(data?.data).userInfo();
-  //   console.log('testo:', dataFormated);
+
   return { isLoading, isError: error, dataFormated };
 };
 

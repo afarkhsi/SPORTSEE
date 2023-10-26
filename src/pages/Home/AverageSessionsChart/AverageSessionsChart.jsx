@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
 import LineChartComponent from '../../../components/LineChart/LineChart';
-
-// const userId = '12';
+import { LoaderContainer } from '../ScoreChart/ScoreChart';
+import { Loader } from '../../../utils/styles/Atoms';
 
 const useLineChart = () => {
   const { userId } = useParams();
@@ -12,14 +12,17 @@ const useLineChart = () => {
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = data?.data?.sessions;
-  // console.log('test:', dataFormated);
   return { isLoading, isError: error, dataFormated };
 };
 
 const AverageSessionsChart = () => {
   const { isLoading, dataFormated, isError } = useLineChart();
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return (
+      <LoaderContainer>
+        <Loader />
+      </LoaderContainer>
+    );
   }
 
   if (isError) {

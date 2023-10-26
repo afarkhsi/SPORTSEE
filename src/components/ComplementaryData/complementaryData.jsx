@@ -22,15 +22,13 @@ const CompletaryInfoSubtitle = styled.h3`
 `;
 
 // Function generating Component cards complementary (fat / ckal / carbs / protein)
-const CompletaryData = (props) => {
-  const { value, unit, subtitle, img } = props;
-
+const CompletaryData = ({ data, img, unit, subtitle }) => {
   return (
     <CompletaryDataContainer>
       <CompletaryImg src={img} alt="image" />
       <CompletaryInfo>
         <CompletaryInfoTitle>
-          {value} {unit}
+          {data} {unit}
         </CompletaryInfoTitle>
         <CompletaryInfoSubtitle>{subtitle}</CompletaryInfoSubtitle>
       </CompletaryInfo>

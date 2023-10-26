@@ -1,27 +1,20 @@
 import './style.css';
 import NavBar from '../../components/NavBar/navBar';
 import styled from 'styled-components';
-import CardInfo from '../../components/CardInfos/CardInfos';
-import BarChartComponent from '../../components/BarChart/BarChart';
-import RadialChartComponent from '../../components/RadialBarChart/RadialBarChart';
-import LineChartComponent from '../../components/LineChart/LineChart';
 import CompletaryData from '../../components/ComplementaryData/complementaryData';
 import cKalImg from '../../assets/calories-icon.svg';
 import fatImg from '../../assets/fat-icon.svg';
 import carbsImg from '../../assets/carbs-icon.svg';
 import proteinImg from '../../assets/protein-icon.svg';
 import { Loader } from '../../utils/styles/Atoms';
-import {
-  UserActivityData,
-  UserAverageSessionsData,
-  UserMainData,
-} from '../../utils/hooks/useFetch';
-import ErrorMessage from '../../components/Error/error';
 import PerformanceChart from './PerformanceChart/PerformanceChart';
-import { useLocation } from 'react-router-dom';
 import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
 import ScoreChart from './ScoreChart/ScoreChart';
 import User from './User/User';
+import ActivityChart from './ActivityChart/ActivityChart';
+import { useLocation, useParams } from 'react-router-dom';
+import useFetch, { apiUrl } from '../../utils/hooks/useFetch';
+import Adapter from '../../utils/adapter/adapter';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -30,7 +23,7 @@ const HomeContainer = styled.div`
   height: 92%;
 `;
 
-const LoaderWrapper = styled.div`
+export const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -71,17 +64,13 @@ const CaloriesContainer = styled.div`
 `;
 
 function HomePage() {
-  const { isLoading, data, keyData } = UserMainData();
-  const { dataActivity } = UserActivityData();
-
-  // if (location?.state?.userId == null) {
-  //   return <div>EROOOR</div>;
-  // }
-  // const { dataPerformance } = UserPerformanceData();
-
-  // if (!data || !dataAverageSession || !dataActivity) {
-  //   return <ErrorMessage />;
-  // }
+  const { userId } = useParams();
+  const location = useLocation();
+  const url = `${apiUrl}/user/${userId}`;
+  const mockedUrl = `../../../mockDataUser.json`;
+  const { data, isLoading, error } = useFetch(url);
+  const dataFormated = new Adapter(data?.data).completaryData();
+  console.log('testo:', dataFormated);
 
   return (
     <HomeContainer>
@@ -97,7 +86,7 @@ function HomePage() {
           <User />
           <ChartsWrapper className="body_container_charts">
             <ChartsContainer>
-              <BarChartComponent data={dataActivity} />
+              <ActivityChart />
               <ChartsContainerBlock className="default_class_chart">
                 <AverageSessionsChart />
                 <PerformanceChart />
@@ -107,26 +96,25 @@ function HomePage() {
             <CaloriesContainer className="complementary_container">
               <CompletaryData
                 img={cKalImg}
-                value={keyData?.calorieCount}
+                data={dataFormated?.calorieCount}
                 unit="kCal"
                 subtitle="Calories"
               />
               <CompletaryData
                 img={proteinImg}
-                value={keyData?.proteinCount}
+                data={dataFormated?.proteinCount}
                 unit="g"
                 subtitle="Protéines"
               />
               <CompletaryData
                 img={carbsImg}
-                value={keyData?.carbohydrateCount}
+                data={dataFormated?.carbohydrateCount}
                 unit="g"
                 subtitle="Glucides"
               />
-
               <CompletaryData
                 img={fatImg}
-                value={keyData?.lipidCount}
+                data={dataFormated?.carbohydrateCount}
                 unit="g"
                 subtitle="Lipides"
               />

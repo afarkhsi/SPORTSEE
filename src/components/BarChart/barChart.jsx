@@ -12,14 +12,13 @@ import {
 import './style.css';
 
 // Function generating Component BarChart Activity
-const BarChartComponent = (props) => {
-  const data = props.data;
-  const dataActivity = data?.sessions;
-
+const BarChartComponent = ({ data }) => {
+  /**Function generating tick datakey in xAxis */
   const dayData = () => {
-    return dataActivity.map((session, index) => index + 1);
+    return data.map((session, index) => index + 1);
   };
 
+  /**Function generating customize tooltip */
   const renderTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -56,7 +55,7 @@ const BarChartComponent = (props) => {
         className="barchart_wrapper"
         barSize={10}
         barGap={10}
-        data={dataActivity}
+        data={data}
         margin={{
           top: 5,
           right: 30,

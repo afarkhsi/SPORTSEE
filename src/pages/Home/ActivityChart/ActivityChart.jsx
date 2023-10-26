@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import Adapter from '../../../utils/adapter/adapter';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
+import { LoaderContainer } from '../ScoreChart/ScoreChart';
+import { Loader } from '../../../utils/styles/Atoms';
 import BarChartComponent from '../../../components/BarChart/BarChart';
 
 const useActivityChart = () => {
@@ -10,15 +12,18 @@ const useActivityChart = () => {
   const mockedUrl = `../../../mockDataActivity.json`;
 
   const { data, error, isLoading } = useFetch(url);
-  const dataFormated = new Adapter(data?.data?.data).performance();
-  // console.log('test2:', dataFormated);
+  const dataFormated = new Adapter(data?.data).activity();
   return { isLoading, isError: error, dataFormated };
 };
 
 const ActivityChart = () => {
   const { isLoading, dataFormated, isError } = useActivityChart();
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return (
+      <LoaderContainer>
+        <Loader />
+      </LoaderContainer>
+    );
   }
 
   if (isError) {

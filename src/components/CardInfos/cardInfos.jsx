@@ -19,7 +19,6 @@ const CardFirstname = styled.span`
 
 // Function generating Component User informations
 const CardInfo = ({ data }) => {
-  console.log('test:', data);
   return (
     <CardInfoContainer>
       <CardInfoTitle>

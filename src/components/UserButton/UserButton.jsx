@@ -29,7 +29,7 @@ const UserButton = ({ id, firstName }) => {
   };
 
   return (
-    <UsersWrapperButton to={`/user/${state?.userId}`}>
+    <UsersWrapperButton to={`/user/${state?.userId}`} state={state} id={id}>
       {firstName}
     </UsersWrapperButton>
   );
