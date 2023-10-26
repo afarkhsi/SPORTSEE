@@ -2,9 +2,9 @@ import './style.css';
 import NavBar from '../../components/NavBar/navBar';
 import styled from 'styled-components';
 import CardInfo from '../../components/CardInfos/CardInfos';
-import BarChartComponent from '../../components/BarChart/barChart';
-import RadialChartComponent from '../../components/RadialBarChart/radialBarChart';
-import LineChartComponent from '../../components/LineChart/lineChart';
+import BarChartComponent from '../../components/BarChart/BarChart';
+import RadialChartComponent from '../../components/RadialBarChart/RadialBarChart';
+import LineChartComponent from '../../components/LineChart/LineChart';
 import CompletaryData from '../../components/ComplementaryData/complementaryData';
 import cKalImg from '../../assets/calories-icon.svg';
 import fatImg from '../../assets/fat-icon.svg';
@@ -21,6 +21,7 @@ import PerformanceChart from './PerformanceChart/PerformanceChart';
 import { useLocation } from 'react-router-dom';
 import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
 import ScoreChart from './ScoreChart/ScoreChart';
+import User from './User/User';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -93,7 +94,7 @@ function HomePage() {
         </LoaderWrapper>
       ) : (
         <BodyContainer className="body_container">
-          <CardInfo data={data} />
+          <User />
           <ChartsWrapper className="body_container_charts">
             <ChartsContainer>
               <BarChartComponent data={dataActivity} />

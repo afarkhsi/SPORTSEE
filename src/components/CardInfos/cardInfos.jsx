@@ -18,14 +18,12 @@ const CardFirstname = styled.span`
 `;
 
 // Function generating Component User informations
-const CardInfo = (props) => {
-  const data = props.data;
-  const dataUserInfo = data?.data?.userInfos;
-  const firstName = dataUserInfo?.firstName;
+const CardInfo = ({ data }) => {
+  console.log('test:', data);
   return (
     <CardInfoContainer>
       <CardInfoTitle>
-        Bonjour <CardFirstname>{firstName}</CardFirstname>
+        Bonjour <CardFirstname>{data}</CardFirstname>
       </CardInfoTitle>
       <CardInfoSubtitle>
         Félicitation ! Vous avez explosé vos objectifs hier 👏

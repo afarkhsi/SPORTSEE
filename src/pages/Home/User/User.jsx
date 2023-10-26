@@ -1,22 +1,22 @@
 import { useParams } from 'react-router-dom';
 import Adapter from '../../../utils/adapter/adapter';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import RadialChartComponent from '../../../components/RadialBarChart/RadialBarChart';
+import CardInfo from '../../../components/CardInfos/CardInfos';
 
-const useScoreChart = () => {
+const useUser = () => {
   const { userId } = useParams();
 
   const url = `${apiUrl}/user/${userId}`;
   const mockedUrl = `../../../mockDataUser.json`;
 
   const { data, error, isLoading } = useFetch(url);
-  const dataFormated = new Adapter(data?.data).score();
+  const dataFormated = new Adapter(data?.data).userInfo();
   //   console.log('testo:', dataFormated);
   return { isLoading, isError: error, dataFormated };
 };
 
-const ScoreChart = () => {
-  const { isLoading, dataFormated, isError } = useScoreChart();
+const User = () => {
+  const { isLoading, dataFormated, isError } = useUser();
   if (isLoading) {
     return <div>Loading ...</div>;
   }
@@ -25,6 +25,6 @@ const ScoreChart = () => {
     return <div>Error</div>;
   }
 
-  return <RadialChartComponent data={dataFormated} />;
+  return <CardInfo data={dataFormated} />;
 };
-export default ScoreChart;
+export default User;

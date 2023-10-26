@@ -1,5 +1,3 @@
-import { Cell } from 'recharts';
-
 class Adapter {
   constructor(data) {
     this.data = data;
@@ -24,13 +22,17 @@ class Adapter {
   }
 
   userInfo() {
-    const user = this.data;
+    const user = this.data?.userInfos?.firstName;
     return user;
   }
 
   score() {
     const dataScore = this.data?.todayScore || this.data?.score;
     return dataScore;
+  }
+
+  activity() {
+    const dataActivity = this.data?.sessions;
   }
 }
 

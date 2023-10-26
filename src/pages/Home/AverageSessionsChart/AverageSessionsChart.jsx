@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import LineChartComponent from '../../../components/LineChart/lineChart';
+import LineChartComponent from '../../../components/LineChart/LineChart';
 
 // const userId = '12';
 

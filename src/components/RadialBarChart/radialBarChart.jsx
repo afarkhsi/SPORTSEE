@@ -31,8 +31,6 @@ const PieChartScoreText = styled.div`
 
 // Function generating Component RadialChart Score
 export default function RadialChartComponent({ data }) {
-  // const data = props.data;
-  console.log('jeteststs:', data);
   const pieData = [
     { name: 'completed', value: data, fillColor: `#FF0000` },
     { name: 'not-completed', value: 1 - data, fillColor: '#FBFBFB' },
