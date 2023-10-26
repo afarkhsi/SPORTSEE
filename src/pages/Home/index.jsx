@@ -10,11 +10,11 @@ import { Loader } from '../../utils/styles/Atoms';
 import PerformanceChart from './PerformanceChart/PerformanceChart';
 import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
 import ScoreChart, { ErrorContainer } from './ScoreChart/ScoreChart';
-import User from './User/User';
 import ActivityChart from './ActivityChart/ActivityChart';
 import { useParams } from 'react-router-dom';
 import useFetch, { apiUrl } from '../../utils/hooks/useFetch';
 import Adapter from '../../utils/adapter/adapter';
+import CardInfo from '../../components/CardInfos/CardInfos';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -68,7 +68,8 @@ function HomePage() {
   const url = `${apiUrl}/user/${userId}`;
   // const mockedUrl = `../../../mockDataUser.json`;
   const { data, isLoading, error } = useFetch(url);
-  const dataFormated = new Adapter(data?.data).completaryData();
+  const dataKey = new Adapter(data?.data).completaryData();
+  const dataUser = new Adapter(data?.data).userInfo();
 
   return (
     <HomeContainer>
@@ -81,7 +82,11 @@ function HomePage() {
         </LoaderWrapper>
       ) : (
         <BodyContainer className="body_container">
-          <User />
+          {error ? (
+            <ErrorContainer> Error! Cannot GET User</ErrorContainer>
+          ) : (
+            <CardInfo data={dataUser} />
+          )}
           <ChartsWrapper className="body_container_charts">
             <ChartsContainer>
               <ActivityChart />
@@ -97,25 +102,25 @@ function HomePage() {
               <CaloriesContainer className="complementary_container">
                 <CompletaryData
                   img={cKalImg}
-                  data={dataFormated?.calorieCount}
+                  data={dataKey?.calorieCount}
                   unit="kCal"
                   subtitle="Calories"
                 />
                 <CompletaryData
                   img={proteinImg}
-                  data={dataFormated?.proteinCount}
+                  data={dataKey?.proteinCount}
                   unit="g"
                   subtitle="Protéines"
                 />
                 <CompletaryData
                   img={carbsImg}
-                  data={dataFormated?.carbohydrateCount}
+                  data={dataKey?.carbohydrateCount}
                   unit="g"
                   subtitle="Glucides"
                 />
                 <CompletaryData
                   img={fatImg}
-                  data={dataFormated?.carbohydrateCount}
+                  data={dataKey?.carbohydrateCount}
                   unit="g"
                   subtitle="Lipides"
                 />

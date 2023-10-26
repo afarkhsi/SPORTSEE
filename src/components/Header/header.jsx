@@ -44,10 +44,10 @@ function Header() {
         <StyledLink to="/" className="header_nav_link">
           Profil
         </StyledLink>
-        <StyledLink to="/" className="header_nav_link">
+        <StyledLink to="/Settings" className="header_nav_link">
           Réglages
         </StyledLink>
-        <StyledLink to="/" className="header_nav_link">
+        <StyledLink to="/Community" className="header_nav_link">
           Communauté
         </StyledLink>
       </div>
