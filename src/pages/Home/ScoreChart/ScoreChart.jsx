@@ -10,8 +10,8 @@ const useScoreChart = () => {
   const mockedUrl = `../../../mockDataUser.json`;
 
   const { data, error, isLoading } = useFetch(url);
-  const dataFormated = new Adapter(data?.data?.data).performance();
-  console.log('testo:', data);
+  const dataFormated = new Adapter(data?.data).score();
+  console.log('testo:', dataFormated);
   return { isLoading, isError: error, dataFormated };
 };
 

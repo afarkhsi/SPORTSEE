@@ -12,7 +12,7 @@ const useLineChart = () => {
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = data?.data?.sessions;
-  console.log('test:', dataFormated);
+  // console.log('test:', dataFormated);
   return { isLoading, isError: error, dataFormated };
 };
 

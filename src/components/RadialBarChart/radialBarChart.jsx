@@ -30,13 +30,12 @@ const PieChartScoreText = styled.div`
 `;
 
 // Function generating Component RadialChart Score
-export default function RadialChartComponent(props) {
-  const data = props.data;
-  const dataScore = data?.data?.score || data?.data?.todayScore;
-
+export default function RadialChartComponent({ data }) {
+  // const data = props.data;
+  console.log('jeteststs:', data);
   const pieData = [
-    { name: 'completed', value: dataScore, fillColor: `#FF0000` },
-    { name: 'not-completed', value: 1 - dataScore, fillColor: '#FBFBFB' },
+    { name: 'completed', value: data, fillColor: `#FF0000` },
+    { name: 'not-completed', value: 1 - data, fillColor: '#FBFBFB' },
   ];
 
   return (
@@ -72,9 +71,7 @@ export default function RadialChartComponent(props) {
         </PieChart>
       </ResponsiveContainer>
       <PieChartScoreText className="piechart-container_score">
-        <span className="piechart-container_score_value">
-          {100 * dataScore} %
-        </span>
+        <span className="piechart-container_score_value">{100 * data} %</span>
         <span className="piechart-container_score_text">de votre objectif</span>
       </PieChartScoreText>
     </PieCHartContainer>

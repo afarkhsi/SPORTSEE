@@ -13,7 +13,7 @@ const usePerformanceChart = () => {
 
   const { data, error, isLoading } = useFetch(url);
   const dataFormated = new Adapter(data?.data?.data).performance();
-  console.log('testo:', data);
+  // console.log('test2:', dataFormated);
   return { isLoading, isError: error, dataFormated };
 };
 

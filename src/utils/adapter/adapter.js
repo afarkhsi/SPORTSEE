@@ -1,3 +1,5 @@
+import { Cell } from 'recharts';
+
 class Adapter {
   constructor(data) {
     this.data = data;
@@ -19,6 +21,16 @@ class Adapter {
         kind: kindData[dataValue.kind],
       }))
       .reverse();
+  }
+
+  userInfo() {
+    const user = this.data;
+    return user;
+  }
+
+  score() {
+    const dataScore = this.data?.todayScore || this.data?.score;
+    return dataScore;
   }
 }
 

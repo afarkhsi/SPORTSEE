@@ -20,6 +20,7 @@ import ErrorMessage from '../../components/Error/error';
 import PerformanceChart from './PerformanceChart/PerformanceChart';
 import { useLocation } from 'react-router-dom';
 import AverageSessionsChart from './AverageSessionsChart/AverageSessionsChart';
+import ScoreChart from './ScoreChart/ScoreChart';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -99,7 +100,7 @@ function HomePage() {
               <ChartsContainerBlock className="default_class_chart">
                 <AverageSessionsChart />
                 <PerformanceChart />
-                <RadialChartComponent data={data} />
+                <ScoreChart />
               </ChartsContainerBlock>
             </ChartsContainer>
             <CaloriesContainer className="complementary_container">
