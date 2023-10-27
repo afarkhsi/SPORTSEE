@@ -1,4 +1,4 @@
-import PerformanceRadarChart from '../../../components/PerformanceRadarChart/performanceRadarChart';
+import PerformanceRadarChart from '../../../components/PerformanceRadarChart/PerformanceRadarChart';
 import { ErrorContainer, LoaderContainer } from '../ScoreChart/ScoreChart';
 import { Loader } from '../../../utils/styles/Atoms';
 import { usePerformanceChart } from '../../../service/useService';
