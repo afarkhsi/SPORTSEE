@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-export const apiUrl = 'http://localhost:3000';
-
 // Hook Fetch data
 export default function useFetch(url) {
   const [data, setData] = useState(null);

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
+import cKalImg from '../../assets/calories-icon.svg';
+import fatImg from '../../assets/fat-icon.svg';
+import carbsImg from '../../assets/carbs-icon.svg';
+import proteinImg from '../../assets/protein-icon.svg';
 
 const CompletaryDataContainer = styled.div`
   display: flex;
@@ -21,18 +25,46 @@ const CompletaryInfoSubtitle = styled.h3`
   color: #74798c;
 `;
 
+const CaloriesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+`;
+
 // Function generating Component cards complementary (fat / ckal / carbs / protein)
-const CompletaryData = ({ data, img, unit, subtitle }) => {
+const CompletaryData = ({ data }) => {
   return (
-    <CompletaryDataContainer>
-      <CompletaryImg src={img} alt="image" />
-      <CompletaryInfo>
-        <CompletaryInfoTitle>
-          {data} {unit}
-        </CompletaryInfoTitle>
-        <CompletaryInfoSubtitle>{subtitle}</CompletaryInfoSubtitle>
-      </CompletaryInfo>
-    </CompletaryDataContainer>
+    <CaloriesContainer className="complementary_container">
+      <CompletaryDataContainer>
+        <CompletaryImg src={cKalImg} alt="image" />
+        <CompletaryInfo>
+          <CompletaryInfoTitle>{data.calorieCount} cKal</CompletaryInfoTitle>
+          <CompletaryInfoSubtitle>Calories</CompletaryInfoSubtitle>
+        </CompletaryInfo>
+      </CompletaryDataContainer>
+      <CompletaryDataContainer>
+        <CompletaryImg src={fatImg} alt="image" />
+        <CompletaryInfo>
+          <CompletaryInfoTitle>{data.proteinCount} g</CompletaryInfoTitle>
+          <CompletaryInfoSubtitle>Protéines</CompletaryInfoSubtitle>
+        </CompletaryInfo>
+      </CompletaryDataContainer>
+      <CompletaryDataContainer>
+        <CompletaryImg src={carbsImg} alt="image" />
+        <CompletaryInfo>
+          <CompletaryInfoTitle>{data.carbohydrateCount} g</CompletaryInfoTitle>
+          <CompletaryInfoSubtitle>Glucides</CompletaryInfoSubtitle>
+        </CompletaryInfo>
+      </CompletaryDataContainer>
+      <CompletaryDataContainer>
+        <CompletaryImg src={proteinImg} alt="image" />
+        <CompletaryInfo>
+          <CompletaryInfoTitle>{data.lipidCount} g</CompletaryInfoTitle>
+          <CompletaryInfoSubtitle>Lipides</CompletaryInfoSubtitle>
+        </CompletaryInfo>
+      </CompletaryDataContainer>
+    </CaloriesContainer>
   );
 };
 

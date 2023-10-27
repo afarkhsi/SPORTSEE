@@ -1,19 +1,7 @@
-import { useParams } from 'react-router-dom';
-import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import LineChartComponent from '../../../components/LineChart/LineChart';
+import LineChartComponent from '../../../components/LineChart/lineChart';
 import { ErrorContainer, LoaderContainer } from '../ScoreChart/ScoreChart';
 import { Loader } from '../../../utils/styles/Atoms';
-
-const useLineChart = () => {
-  const { userId } = useParams();
-
-  const url = `${apiUrl}/user/${userId}/average-sessions`;
-  // const mockedUrl = '../../../mockDataAverageSessions.json';
-
-  const { data, error, isLoading } = useFetch(url);
-  const dataFormated = data?.data?.sessions;
-  return { isLoading, isError: error, dataFormated };
-};
+import { useLineChart } from '../../../service/useService';
 
 const AverageSessionsChart = () => {
   const { isLoading, dataFormated, isError } = useLineChart();

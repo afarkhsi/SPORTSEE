@@ -1,9 +1,7 @@
-import { useParams } from 'react-router-dom';
-import Adapter from '../../../utils/adapter/adapter';
-import useFetch, { apiUrl } from '../../../utils/hooks/useFetch';
-import RadialChartComponent from '../../../components/RadialBarChart/RadialBarChart';
+import RadialChartComponent from '../../../components/RadialBarChart/radialBarChart';
 import { Loader } from '../../../utils/styles/Atoms';
 import styled from 'styled-components';
+import { useScoreChart } from '../../../service/useService';
 
 export const LoaderContainer = styled.div`
   display: flex;
@@ -28,18 +26,6 @@ export const ErrorContainer = styled.div`
   border-radius: 5px;
   border: 1px solid rgb(247, 216, 15);
 `;
-
-const useScoreChart = () => {
-  const { userId } = useParams();
-
-  const url = `${apiUrl}/user/${userId}`;
-  // const mockedUrl = `../../../mockDataUser.json`;
-
-  const { data, error, isLoading } = useFetch(url);
-  const dataFormated = new Adapter(data?.data).score();
-  return { isLoading, isError: error, dataFormated };
-};
-
 const ScoreChart = () => {
   const { isLoading, dataFormated, isError } = useScoreChart();
   if (isLoading) {
