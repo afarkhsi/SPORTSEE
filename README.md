@@ -2,9 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![html][html5-badge]
+![css][css3-badge]
+![javascript][javascript-badge]
+![react][react-badge]
+
+![Banner](./src/assets/website-sportsee.png)
+
 ## Description
 
-Vous travaillez en tant que développeur chez SportSee, une startup dédiée au coaching sportif. En pleine croissance, l’entreprise va aujourd’hui lancer une nouvelle version de la page profil de l’utilisateur. Cette page va notamment permettre à l’utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées.
+SportSee, une startup dédiée au coaching sportif, veut lancer une nouvelle version de la page profil de l’utilisateur. Cette page va notamment permettre à l’utilisateur de suivre le nombre de sessions réalisées ainsi que le nombre de calories brûlées.
 
 ### Objectif
 
@@ -40,3 +47,10 @@ Vous travaillez en tant que développeur chez SportSee, une startup dédiée au 
 - La commande `yarn` vous permettra d'installer les dépendances liée à ce repository
 - La commande `yarn start` vous permettra par la suite de lancer la micro API.
 - La micro API est lancée sur `http://localhost:3001` (3000 étant occupé par le back)
+
+<!-- BADGE LINKS -->
+
+[html5-badge]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[css3-badge]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[javascript-badge]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[react-badge]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
